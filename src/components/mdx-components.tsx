@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 
 import { cn } from "@/lib/utils";
 import type { Style } from "@/registry/styles";
+import type { MDXComponents } from "mdx/types";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 import { BlockItem } from "./block-item";
@@ -89,7 +90,7 @@ const components = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "leading-7 [&:not(:first-child)]:mt-6 text-foreground-light",
+        "leading-7 not-first:mt-6 text-foreground-light",
         className,
       )}
       {...props}
@@ -141,7 +142,7 @@ const components = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        "border px-4 py-2 text-left font-normal [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border px-4 py-2 text-left font-normal [[align=center]]:text-center [[align=right]]:text-right",
         className,
       )}
       {...props}
@@ -150,7 +151,7 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "border text-foreground-light px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border text-foreground-light px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right",
         className,
       )}
       {...props}
@@ -222,7 +223,7 @@ const components = {
   Card: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <div
       className={cn(
-        "flex w-full flex-col items-center rounded-xl border bg-surface-100 text-card-background py-6 px-4 shadow transition-colors hover:bg-muted/50 sm:p-10",
+        "flex w-full flex-col items-center rounded-xl border bg-surface-100 text-card-background py-6 px-4 shadow-sm transition-colors hover:bg-muted/50 sm:p-10",
         className,
       )}
       {...props}
@@ -231,7 +232,7 @@ const components = {
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn(
-        "flex w-full flex-col items-center justify-center rounded-xl border bg-surface-100 text-card-background py-6 px-4 shadow transition-colors hover:bg-muted/50 sm:p-10 h-52",
+        "flex w-full flex-col items-center justify-center rounded-xl border bg-surface-100 text-card-background py-6 px-4 shadow-sm transition-colors hover:bg-muted/50 sm:p-10 h-52",
         className,
       )}
       {...props}
@@ -253,7 +254,7 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
-      <Component components={components} />
+      <Component components={components as unknown as MDXComponents} />
     </div>
   );
 }

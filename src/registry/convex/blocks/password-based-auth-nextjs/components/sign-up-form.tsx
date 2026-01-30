@@ -68,7 +68,7 @@ export function SignUpForm() {
         <CardDescription>Enter your details to get started</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pb-6">
           {error && (
             <Alert variant="destructive">
               <AlertDescription>{error}</AlertDescription>

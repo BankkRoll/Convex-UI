@@ -10,7 +10,7 @@ interface LogoutButtonProps {
   variant?:
     | "default"
     | "destructive"
-    | "outline"
+    | "outline-solid"
     | "secondary"
     | "ghost"
     | "link";

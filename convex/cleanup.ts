@@ -121,6 +121,14 @@ export const cleanupAnonymousUsers = internalMutation({
         .filter((q) => q.eq(q.field("userId"), user._id))
         .collect();
       for (const s of authSessions) {
+        // Delete refresh tokens for this session
+        const refreshTokens = await ctx.db
+          .query("authRefreshTokens")
+          .filter((q) => q.eq(q.field("sessionId"), s._id))
+          .collect();
+        for (const t of refreshTokens) {
+          await ctx.db.delete(t._id);
+        }
         await ctx.db.delete(s._id);
       }
 
@@ -230,6 +238,14 @@ export const cleanupAll = internalMutation({
         .filter((q) => q.eq(q.field("userId"), user._id))
         .collect();
       for (const s of authSessions) {
+        // Delete refresh tokens for this session
+        const refreshTokens = await ctx.db
+          .query("authRefreshTokens")
+          .filter((q) => q.eq(q.field("sessionId"), s._id))
+          .collect();
+        for (const t of refreshTokens) {
+          await ctx.db.delete(t._id);
+        }
         await ctx.db.delete(s._id);
       }
 

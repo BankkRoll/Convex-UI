@@ -23,15 +23,11 @@ export interface PresenceUser {
   color?: string;
 }
 
-// Get or create a session ID for demo mode
-function getSessionId(): string {
-  if (typeof window === "undefined") return "";
-  let id = localStorage.getItem("demo-session-id");
-  if (!id) {
-    id = `demo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-    localStorage.setItem("demo-session-id", id);
-  }
-  return id;
+// Generate a unique session ID per component instance
+// Important: Do NOT use localStorage as it's shared between iframes/tabs on the same domain,
+// which would cause all instances to share the same sessionId and filter out each other
+function generateSessionId(): string {
+  return `session-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 }
 
 export function useRealtimePresenceRoom({
@@ -46,7 +42,7 @@ export function useRealtimePresenceRoom({
   const heartbeatRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    setSessionId(getSessionId());
+    setSessionId(generateSessionId());
   }, []);
 
   const users: PresenceUser[] = (presenceData ?? []).map((p: any) => ({

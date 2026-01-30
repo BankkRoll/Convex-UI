@@ -75,6 +75,7 @@ description: Frequently asked questions about Convex UI
 
 {`npm install convex @convex-dev/auth
 npx convex dev`}
+
 </CodeBlock>
 
       That's it. No dashboard configuration, no account creation, no complex setup. Just run `convex dev` and start building.
@@ -99,6 +100,7 @@ npx convex dev`}
 
 {`// This automatically re-renders when messages change
 const messages = useQuery(api.messages.list, { roomId: "general" });`}
+
 </CodeBlock>
 
       **No extra setup required:**
@@ -124,11 +126,11 @@ const messages = useQuery(api.messages.list, { roomId: "general" });`}
         </Card>
         <Card>
           <h4 className="font-semibold mb-2">2. Code your functions</h4>
-          <p className="text-sm text-muted-foreground">Edit files in <code>convex/</code></p>
+          <span className="text-sm text-muted-foreground">Edit files in <code>convex/</code></span>
         </Card>
         <Card>
           <h4 className="font-semibold mb-2">3. Changes sync instantly</h4>
-          <p className="text-sm text-muted-foreground">Hot reload for backend code</p>
+          <span className="text-sm text-muted-foreground">Hot reload for backend code</span>
         </Card>
         <Card>
           <h4 className="font-semibold mb-2">4. Deploy when ready</h4>
@@ -269,6 +271,7 @@ const messages = useQuery(api.messages.list, { roomId: "general" });`}
 {`# Required in .env.local
 CONVEX_DEPLOYMENT=dev:your-project-name
 NEXT_PUBLIC_CONVEX_URL=https://your-project.convex.cloud`}
+
 </CodeBlock>
 
       For auth components, you also need:
@@ -276,6 +279,7 @@ NEXT_PUBLIC_CONVEX_URL=https://your-project.convex.cloud`}
       <CodeBlock language="env">
 
 {`CONVEX_SITE_URL=http://localhost:3000`}
+
 </CodeBlock>
 
       <Callout type="info" className="mt-4">

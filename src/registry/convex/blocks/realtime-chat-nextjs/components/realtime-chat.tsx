@@ -54,8 +54,8 @@ export function RealtimeChat({
   };
 
   return (
-    <Card className={`flex flex-col h-full ${className ?? ""}`}>
-      <CardHeader className="flex flex-row justify-between items-center space-y-0 border-b">
+    <Card className={`flex flex-col h-full py-0 gap-0 ${className ?? ""}`}>
+      <CardHeader className="flex flex-row justify-between items-center py-4 space-y-0 border-b">
         <CardTitle className="text-lg">{roomName}</CardTitle>
         <Badge
           variant={isConnected ? "default" : "destructive"}
@@ -69,7 +69,7 @@ export function RealtimeChat({
       <CardContent
         ref={containerRef}
         onScroll={handleScroll}
-        className="overflow-y-auto flex-1 space-y-4 p-4 bg-muted/20"
+        className="overflow-y-auto flex-1 space-y-4 p-4! bg-muted/20"
       >
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
@@ -86,7 +86,7 @@ export function RealtimeChat({
         )}
       </CardContent>
 
-      <CardFooter className="border-t p-4">
+      <CardFooter className="border-t p-4!">
         <form onSubmit={handleSubmit} className="w-full">
           <div className="flex gap-2">
             <Input

@@ -111,34 +111,34 @@ Visit our [documentation](https://convex-ui.vercel.app/docs) for detailed usage 
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
 ```
 
 ## Project Structure
 
 ```
-├── app/                    # Next.js app directory
-├── components/             # Shared UI components
-├── content/docs/           # Documentation (MDX)
-├── convex/                 # Convex backend functions
+├── src/
+│   ├── app/               # Next.js app directory
+│   ├── components/        # Shared UI components
+│   └── registry/
+│       └── convex/        # Convex UI components
+│           ├── blocks/    # Feature blocks
+│           ├── clients/   # Framework clients
+│           └── examples/  # Demo components
+├── content/docs/          # Documentation (MDX)
+├── convex/                # Convex backend functions
 │   ├── schema.ts          # Database schema
 │   ├── auth.ts            # Auth configuration
 │   ├── users.ts           # User queries/mutations
 │   ├── messages.ts        # Chat messages
 │   ├── presence.ts        # Realtime presence
 │   └── files.ts           # File storage
-├── registry/
-│   ├── convex/            # Convex UI components
-│   │   ├── blocks/        # Feature blocks
-│   │   ├── clients/       # Framework clients
-│   │   └── examples/      # Demo components
-│   └── default/           # Original Supabase components (reference)
 └── public/                # Static assets
 ```
 

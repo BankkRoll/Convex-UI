@@ -1,23 +1,109 @@
 /* mdx.css */
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where([data-theme^="dark"], [data-theme="classic-dark"], [data-theme^="dark"], [data-theme="classic-dark"] *));
+
+@theme {
+  --container-site: 128rem;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* CUSTOM UTILITIES FOR TAILWIND */
-@layer utilities {
-  .text-foreground-muted {
-    color: hsl(var(--muted-foreground));
-  }
-  .border-foreground-muted {
-    border-color: hsl(var(--muted-foreground));
-  }
-  .bg-surface-100 {
-    background-color: hsl(var(--card));
-  }
-  .bg-surface-200 {
-    background-color: hsl(var(--popover));
-  }
+@utility text-foreground-muted {
+  color: hsl(var(--muted-foreground));
+}
+@utility border-foreground-muted {
+  border-color: hsl(var(--muted-foreground));
+}
+@utility bg-surface-100 {
+  background-color: hsl(var(--card));
+}
+@utility bg-surface-200 {
+  background-color: hsl(var(--popover));
 }
 
 /* MDX CODE BLOCKS - rehype-pretty-code v0.14+ */
@@ -34,14 +120,14 @@
 
 /* Code element */
 [data-rehype-pretty-code-figure] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 font-mono;
+  @apply grid min-w-full wrap-break-word rounded-none border-0 bg-transparent p-0 font-mono;
   counter-reset: line;
   box-decoration-break: clone;
 }
 
 /* Line styling */
 [data-rehype-pretty-code-figure] code [data-line] {
-  @apply px-4 min-h-[1.5rem] py-0.5 w-full inline-block leading-relaxed;
+  @apply px-4 min-h-6 py-0.5 w-full inline-block leading-relaxed;
 }
 
 /* Dual theme support - Dark */
@@ -133,7 +219,7 @@
 
 .shiki-wrapper .shiki .line,
 .code-block-content .shiki .line {
-  @apply inline-block w-full min-h-[1.5rem] leading-relaxed;
+  @apply inline-block w-full min-h-6 leading-relaxed;
 }
 
 /* Shiki dual theme support - Dark */

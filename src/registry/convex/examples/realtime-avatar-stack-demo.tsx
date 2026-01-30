@@ -3,25 +3,11 @@
 import { useMemo } from "react";
 import { DemoAuthWrapper } from "@/components/demo-auth-wrapper";
 import { RealtimeAvatarStack } from "@/registry/convex/blocks/realtime-avatar-stack-nextjs/components/realtime-avatar-stack";
-
-// Random colors for demo users
-const colors = [
-  "#3b82f6",
-  "#ef4444",
-  "#10b981",
-  "#f59e0b",
-  "#8b5cf6",
-  "#ec4899",
-];
+import { generateRandomUser } from "@/lib/random-name";
 
 export default function RealtimeAvatarStackDemo() {
-  const user = useMemo(
-    () => ({
-      name: `User-${Math.floor(Math.random() * 1000)}`,
-      color: colors[Math.floor(Math.random() * colors.length)],
-    }),
-    [],
-  );
+  // Generate a random user identity that persists for this session
+  const user = useMemo(() => generateRandomUser(), []);
 
   return (
     <DemoAuthWrapper>
@@ -29,7 +15,7 @@ export default function RealtimeAvatarStackDemo() {
         <div>
           <h3 className="text-sm font-medium mb-2">Small</h3>
           <RealtimeAvatarStack
-            roomName="avatar-demo-room"
+            roomName="avatar-stack-demo"
             user={user}
             size="sm"
           />
@@ -37,7 +23,7 @@ export default function RealtimeAvatarStackDemo() {
         <div>
           <h3 className="text-sm font-medium mb-2">Medium (default)</h3>
           <RealtimeAvatarStack
-            roomName="avatar-demo-room"
+            roomName="avatar-stack-demo"
             user={user}
             size="md"
           />
@@ -45,7 +31,7 @@ export default function RealtimeAvatarStackDemo() {
         <div>
           <h3 className="text-sm font-medium mb-2">Large</h3>
           <RealtimeAvatarStack
-            roomName="avatar-demo-room"
+            roomName="avatar-stack-demo"
             user={user}
             size="lg"
           />

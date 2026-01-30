@@ -73,7 +73,7 @@ export function Command({
       <div className="bg-surface-200 w-full overflow-hidden relative px-4 py-3 rounded-lg group dark:bg-surface-100">
         {highlight && (
           <motion.div
-            className="absolute inset-0 bg-gradient-to-l from-transparent via-[#bbb] dark:via-white to-transparent opacity-10 z-0"
+            className="absolute inset-0 bg-linear-to-l from-transparent via-[#bbb] dark:via-white to-transparent opacity-10 z-0"
             initial={{ x: "100%" }}
             animate={{ x: "-100%" }}
             transition={{
@@ -120,7 +120,7 @@ export function Command({
                   </span>
                   {commands[manager]}
                 </div>
-                <div className="flex-shrink-0 relative z-10 ml-2">
+                <div className="shrink-0 relative z-10 ml-2">
                   <CommandCopyButton command={commands[manager]} />
                 </div>
               </div>

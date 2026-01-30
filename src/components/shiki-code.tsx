@@ -231,7 +231,7 @@ export function ShikiCode({
   return (
     <div className={cn("group relative h-full w-full", className)}>
       <div
-        className="shiki-wrapper h-full w-full overflow-auto bg-card text-sm [&_pre]:!bg-transparent [&_pre]:p-4 [&_pre]:m-0 [&_code]:block [&_.line]:px-0 [&_.line]:min-h-[1.5rem] [&_pre]:text-foreground"
+        className="shiki-wrapper h-full w-full overflow-auto bg-card text-sm [&_pre]:bg-transparent! [&_pre]:p-4 [&_pre]:m-0 [&_code]:block [&_.line]:px-0 [&_.line]:min-h-6 [&_pre]:text-foreground"
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <Button

@@ -1,34 +1,26 @@
 "use client";
 
+import { useMemo } from "react";
 import { DemoAuthWrapper } from "@/components/demo-auth-wrapper";
 import { RealtimeCursors } from "@/registry/convex/blocks/realtime-cursor-nextjs/components/realtime-cursors";
-
-const userColors: Record<string, string> = {
-  left: "#3b82f6", // Blue
-  right: "#ef4444", // Red
-};
+import { generateRandomUser } from "@/lib/random-name";
 
 interface RealtimeCursorDemoProps {
   roomName?: string;
-  userId?: string;
 }
 
 export default function RealtimeCursorDemo({
-  roomName = "demo-cursor-room",
-  userId,
+  roomName = "cursor-demo",
 }: RealtimeCursorDemoProps) {
-  const username = userId
-    ? `User ${userId}`
-    : `User-${Math.floor(Math.random() * 1000)}`;
-  const userColor =
-    userId && userColors[userId] ? userColors[userId] : "#3b82f6";
+  // Generate a random user identity that persists for this session
+  const user = useMemo(() => generateRandomUser(), []);
 
   return (
     <DemoAuthWrapper>
       <RealtimeCursors
         roomName={roomName}
-        username={username}
-        userColor={userColor}
+        username={user.name}
+        userColor={user.color}
         className="h-[400px] w-full border rounded-lg bg-muted/20 cursor-crosshair"
       >
         <div className="flex items-center justify-center h-full text-muted-foreground text-sm">

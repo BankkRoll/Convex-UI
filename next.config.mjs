@@ -2,6 +2,8 @@ import { withContentlayer } from "next-contentlayer2";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Use webpack instead of turbopack for contentlayer2 compatibility
+  turbopack: {},
   transpilePackages: ["ui", "common", "shared-data", "icons", "tsconfig"],
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
   async redirects() {
@@ -17,10 +19,6 @@ const nextConfig = {
           ]
         : []),
     ];
-  },
-  eslint: {
-    // We are already running linting via GH action, this will skip linting during production build on Vercel
-    ignoreDuringBuilds: true,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {

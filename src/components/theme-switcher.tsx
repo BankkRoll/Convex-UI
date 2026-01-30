@@ -49,9 +49,9 @@ export function ThemeSwitcher() {
           className={cn(
             "relative flex h-8 w-8 items-center justify-center rounded-md transition-all duration-200",
             "hover:bg-accent hover:text-accent-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             theme === t.value
-              ? "bg-background text-foreground shadow-sm"
+              ? "bg-background text-foreground shadow-xs"
               : "text-muted-foreground",
           )}
           title={t.label}
@@ -96,7 +96,7 @@ export function ThemeSwitcherCompact() {
         "flex h-9 w-9 items-center justify-center rounded-md border border-border",
         "bg-background text-foreground",
         "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring",
         "transition-all duration-200",
       )}
       title={`Current: ${currentTheme.label}. Click to cycle themes.`}

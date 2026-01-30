@@ -247,7 +247,7 @@ export function CodeBlock({
       ) : (
         <div
           className={cn(
-            "code-block-content overflow-x-auto text-sm border border-border bg-card [&_pre]:py-4 [&_pre]:m-0 [&_code]:block [&_.line]:px-4 [&_.line]:min-h-[1.5rem]",
+            "code-block-content overflow-x-auto text-sm border border-border bg-card [&_pre]:py-4 [&_pre]:m-0 [&_code]:block [&_.line]:px-4 [&_.line]:min-h-6",
             title ? "rounded-b-lg" : "rounded-lg",
           )}
           dangerouslySetInnerHTML={{ __html: html }}

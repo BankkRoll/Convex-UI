@@ -119,38 +119,24 @@ const SourcePanel = forwardRef<
           {doc.links ? (
             <div className="flex items-center gap-2 justify-end">
               {doc.links?.doc && (
-                <Button
-                  className="rounded-full"
-                  icon={
+                <Button className="rounded-full" asChild>
+                  <Link href={doc.links.doc} target="_blank" rel="noreferrer">
+                    Docs
                     <ExternalLink
                       className="text-foreground-muted"
                       strokeWidth={1}
                     />
-                  }
-                >
-                  <Link
-                    href={doc.links.doc}
-                    target="_blank"
-                    rel="noreferrer"
-
-                    // className={cn(buttonVariants({ variant: 'default' }), 'gap-1')}
-                  >
-                    Docs
                   </Link>
                 </Button>
               )}
               {doc.links?.api && (
-                <Button
-                  className="rounded-full"
-                  icon={
+                <Button className="rounded-full" asChild>
+                  <Link href={doc.links.api} target="_blank" rel="noreferrer">
+                    API Reference
                     <ExternalLink
                       className="text-foreground-muted"
                       strokeWidth={1}
                     />
-                  }
-                >
-                  <Link href={doc.links.api} target="_blank" rel="noreferrer">
-                    API Reference
                   </Link>
                 </Button>
               )}
@@ -225,32 +211,24 @@ const SourcePanel = forwardRef<
             {doc.links ? (
               <div className="flex items-center gap-2 justify-end">
                 {doc.links?.doc && (
-                  <Button
-                    className="rounded-full"
-                    icon={
+                  <Button className="rounded-full" asChild>
+                    <Link href={doc.links.doc} target="_blank" rel="noreferrer">
+                      Docs
                       <ExternalLink
                         className="text-foreground-muted"
                         strokeWidth={1}
                       />
-                    }
-                  >
-                    <Link href={doc.links.doc} target="_blank" rel="noreferrer">
-                      Docs
                     </Link>
                   </Button>
                 )}
                 {doc.links?.api && (
-                  <Button
-                    className="rounded-full"
-                    icon={
+                  <Button className="rounded-full" asChild>
+                    <Link href={doc.links.api} target="_blank" rel="noreferrer">
+                      API Reference
                       <ExternalLink
                         className="text-foreground-muted"
                         strokeWidth={1}
                       />
-                    }
-                  >
-                    <Link href={doc.links.api} target="_blank" rel="noreferrer">
-                      API Reference
                     </Link>
                   </Button>
                 )}

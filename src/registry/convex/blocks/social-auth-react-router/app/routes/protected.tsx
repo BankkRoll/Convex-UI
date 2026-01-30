@@ -18,7 +18,7 @@ export default function ProtectedPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-b from-background to-muted/20 p-4">
         <Card className="w-full max-w-md">
           <CardHeader className="space-y-4">
             <div className="flex items-center gap-4">
@@ -39,7 +39,7 @@ export default function ProtectedPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/20 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-b from-background to-muted/20 p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-4">
           <div className="flex items-center gap-4">

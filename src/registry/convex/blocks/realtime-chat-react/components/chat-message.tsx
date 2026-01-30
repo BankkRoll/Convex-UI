@@ -34,7 +34,7 @@ export function ChatMessage({
       </div>
       <div
         className={cn(
-          "rounded-2xl px-4 py-2.5 text-sm shadow-sm border transition-all",
+          "rounded-2xl px-4 py-2.5 text-sm shadow-xs border transition-all",
           isOwnMessage
             ? "bg-primary text-primary-foreground border-primary/20"
             : "bg-card text-card-foreground border-border",

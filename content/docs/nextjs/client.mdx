@@ -10,12 +10,13 @@ description: Convex client for Next.js
   description="Convex Client for Next.js"
 />
 
-<Callout icon="⚠️" title="Next.js 15 vs 16+ (Proxy)">
+<Callout icon="⚠️">
   Starting with **Next.js 16**, Middleware has been renamed to **Proxy**. This block installs `proxy.ts` with the named `proxy` export for Next.js 16+.
 
 If you're using **Next.js 15 or earlier**, rename the file to `middleware.ts` and change the export:
 
 {" "}
+
 <CodeBlock language="ts">
   {`// middleware.ts (Next.js 15 and earlier)
 export default convexAuthNextjsMiddleware((request, { convexAuth }) => {

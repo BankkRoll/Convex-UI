@@ -113,7 +113,7 @@ export function Dropzone({ upload, className }: DropzoneProps) {
               <button
                 type="button"
                 onClick={open}
-                className="font-medium text-primary hover:underline focus:outline-none"
+                className="font-medium text-primary hover:underline focus:outline-hidden"
                 disabled={loading}
               >
                 click to browse
@@ -164,7 +164,7 @@ export function Dropzone({ upload, className }: DropzoneProps) {
                       <img
                         src={file.preview}
                         alt={file.name}
-                        className="h-12 w-12 rounded-md object-cover shadow-sm"
+                        className="h-12 w-12 rounded-md object-cover shadow-xs"
                       />
                     ) : (
                       <FileIconComponent className="h-12 w-12 text-muted-foreground" />

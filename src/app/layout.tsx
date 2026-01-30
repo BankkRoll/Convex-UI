@@ -19,15 +19,15 @@ export const metadata: Metadata = {
     type: "article",
     authors: "Convex",
     url: `${BASE_PATH}`,
-    images: `${BASE_PATH}/img/convex-og-image.png`,
+    images: `${BASE_PATH}/convex-og-image.png`,
     publishedTime: new Date().toISOString(),
     modifiedTime: new Date().toISOString(),
   },
   twitter: {
     card: "summary_large_image",
-    site: "@convaborathq",
-    creator: "@convexdev",
-    images: `${BASE_PATH}/img/convex-og-image.png`,
+    site: "@convex",
+    creator: "@bankkroll_eth",
+    images: `${BASE_PATH}/convex-og-image.png`,
   },
 };
 

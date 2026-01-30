@@ -1,13 +1,8 @@
 import Demo from "@/registry/convex/examples/realtime-chat-demo";
 
-const RealtimeChatDemoPage = async (props: {
-  searchParams: Promise<{ roomName: string }>;
-}) => {
-  const searchParams = await props.searchParams;
-  const roomName =
-    searchParams["roomName"] || `room-${Math.floor(Math.random() * 1000)}`;
-
-  return <Demo roomName={roomName} />;
+const RealtimeChatDemoPage = () => {
+  // Use a fixed room name so ALL users see each other's messages
+  return <Demo roomName="chat-demo" />;
 };
 
 export default RealtimeChatDemoPage;
