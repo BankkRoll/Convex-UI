@@ -1,0 +1,322 @@
+---
+title: FAQ
+description: Frequently asked questions about Convex UI
+---
+
+<Callout className="mb-8">
+  Can't find what you're looking for? Check out the [Convex
+  documentation](https://docs.convex.dev) or ask in the [Convex
+  Discord](https://convex.dev/community).
+</Callout>
+
+## Getting Started
+
+<Accordion type="single" collapsible className="mb-8">
+  <AccordionItem value="how">
+    <AccordionTrigger>How does Convex UI work?</AccordionTrigger>
+    <AccordionContent>
+      Convex UI uses the **shadcn/ui registry system** to install components directly into your project:
+
+      <Command name="password-based-auth-nextjs" />
+
+      This single command:
+      - Downloads React components to your `src/components/` directory
+      - Adds Convex backend functions to your `convex/` directory
+      - Installs any required npm dependencies
+      - Creates environment variable templates
+
+      <Callout type="info" className="mt-4">
+        Unlike traditional npm packages, these files become **your code**. Customize anything—no upstream updates to worry about.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="overwrite">
+    <AccordionTrigger>Will it overwrite my existing files?</AccordionTrigger>
+    <AccordionContent>
+      **No.** The CLI is safe to run in existing projects:
+
+      | Scenario | Behavior |
+      |----------|----------|
+      | New file | Created automatically |
+      | Existing file (same content) | Skipped |
+      | Existing file (different content) | You're prompted to choose |
+
+      <Callout type="warn" className="mt-4">
+        **Pro tip:** Always commit your changes to Git before adding components. This gives you a clean diff to review.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="existing-project">
+    <AccordionTrigger>Can I use this in an existing project?</AccordionTrigger>
+    <AccordionContent>
+      Yes! Convex UI works great with existing projects. The components are designed to integrate alongside your existing code.
+
+      **Before running commands:**
+      1. Commit any pending changes to Git
+      2. Review what files will be added
+      3. Run the add command
+      4. Check the Git diff to see exactly what changed
+
+      If you already have Convex or shadcn/ui set up, the components will use your existing configuration.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="quickstart-needed">
+    <AccordionTrigger>Do I need to set up Convex first?</AccordionTrigger>
+    <AccordionContent>
+      Yes, but it's fast. Convex setup is just two commands:
+
+      <CodeBlock language="bash">
+
+{`npm install convex @convex-dev/auth
+npx convex dev`}
+</CodeBlock>
+
+      That's it. No dashboard configuration, no account creation, no complex setup. Just run `convex dev` and start building.
+
+      <Callout className="mt-4">
+        See the [Quick Start](/ui/docs/getting-started/quickstart) guide for full setup instructions.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Technical Questions
+
+<Accordion type="single" collapsible className="mb-8">
+  <AccordionItem value="realtime">
+    <AccordionTrigger>How does real-time work?</AccordionTrigger>
+    <AccordionContent>
+      Convex provides **automatic real-time subscriptions**. When data changes anywhere, your UI updates instantly.
+
+      <CodeBlock language="tsx">
+
+{`// This automatically re-renders when messages change
+const messages = useQuery(api.messages.list, { roomId: "general" });`}
+</CodeBlock>
+
+      **No extra setup required:**
+      - No WebSocket configuration
+      - No polling intervals
+      - No cache invalidation
+      - No optimistic update boilerplate
+
+      This powers features like real-time chat, presence indicators, and collaborative cursors in Convex UI.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="local-dev">
+    <AccordionTrigger>How does local development work?</AccordionTrigger>
+    <AccordionContent>
+      Local development with Convex is seamless:
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <Card>
+          <h4 className="font-semibold mb-2">1. Start dev server</h4>
+          <code className="text-sm">npx convex dev</code>
+        </Card>
+        <Card>
+          <h4 className="font-semibold mb-2">2. Code your functions</h4>
+          <p className="text-sm text-muted-foreground">Edit files in <code>convex/</code></p>
+        </Card>
+        <Card>
+          <h4 className="font-semibold mb-2">3. Changes sync instantly</h4>
+          <p className="text-sm text-muted-foreground">Hot reload for backend code</p>
+        </Card>
+        <Card>
+          <h4 className="font-semibold mb-2">4. Deploy when ready</h4>
+          <code className="text-sm">npx convex deploy</code>
+        </Card>
+      </div>
+
+      Your schema lives in code (`convex/schema.ts`), version controlled with your app.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="auth">
+    <AccordionTrigger>What authentication options are available?</AccordionTrigger>
+    <AccordionContent>
+      Convex UI provides two authentication patterns:
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <Card>
+          <div className="flex items-center gap-2 mb-2">
+            <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+            </svg>
+            <h4 className="font-semibold">Password Auth</h4>
+          </div>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• Email/password sign-in</li>
+            <li>• Forgot password flow</li>
+            <li>• Password reset</li>
+          </ul>
+        </Card>
+        <Card>
+          <div className="flex items-center gap-2 mb-2">
+            <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <h4 className="font-semibold">Social Auth</h4>
+          </div>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>• GitHub OAuth</li>
+            <li>• Google OAuth</li>
+            <li>• Extensible for more providers</li>
+          </ul>
+        </Card>
+      </div>
+
+      Both use [`@convex-dev/auth`](https://labs.convex.dev/auth) for secure, built-in authentication.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="react-only">
+    <AccordionTrigger>Why React only?</AccordionTrigger>
+    <AccordionContent>
+      Three reasons:
+
+      1. **shadcn/ui is React-based** — Convex UI builds on top of it
+      2. **Convex has first-class React support** — Hooks like `useQuery` and `useMutation` make real-time seamless
+      3. **It's not a new UI library** — It's established tools (shadcn/ui + Convex) working together
+
+      <Callout type="info" className="mt-4">
+        The backend functions in `convex/` work with any frontend. Only the React components are framework-specific.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Framework Support
+
+<Accordion type="single" collapsible className="mb-8">
+  <AccordionItem value="frameworks">
+    <AccordionTrigger>Which frameworks are supported?</AccordionTrigger>
+    <AccordionContent>
+      Convex UI supports multiple React frameworks:
+
+      | Framework | Status | Auth | Storage | Realtime |
+      |-----------|--------|------|---------|----------|
+      | **Next.js** | Full support | ✓ | ✓ | ✓ |
+      | **React SPA** | Full support | ✓ | ✓ | ✓ |
+      | **React Router** | Full support | ✓ | ✓ | ✓ |
+      | **TanStack Start** | Full support | ✓ | ✓ | ✓ |
+
+      Each framework has its own client configuration and routing patterns. Check the sidebar for framework-specific guides.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="shadcn">
+    <AccordionTrigger>I already have shadcn/ui installed</AccordionTrigger>
+    <AccordionContent>
+      Perfect! You're ready to go. Just run any `add` command to install Convex UI components:
+
+      <Command name="password-based-auth-nextjs" />
+
+      The components will use your existing shadcn/ui configuration and theme.
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="convex-setup">
+    <AccordionTrigger>I already have Convex set up</AccordionTrigger>
+    <AccordionContent>
+      Great! Your existing Convex configuration will be used automatically. The components add new files to your `convex/` directory alongside your existing functions.
+
+      <Callout type="warn" className="mt-4">
+        If you have an existing `convex/schema.ts`, you may need to merge the new schema definitions manually.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="ai-builder">
+    <AccordionTrigger>I used an AI builder (v0, Bolt, etc.)</AccordionTrigger>
+    <AccordionContent>
+      If your AI-generated app uses Convex, you can drop Convex UI components right in. The commands work the same way—just be mindful of any existing auth or schema configurations the AI may have created.
+
+      **Recommended approach:**
+      1. Review what the AI generated in `convex/`
+      2. Commit everything to Git
+      3. Add Convex UI components
+      4. Resolve any schema conflicts
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Troubleshooting
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="env-vars">
+    <AccordionTrigger>My components aren't connecting to Convex</AccordionTrigger>
+    <AccordionContent>
+      Check your environment variables:
+
+      <CodeBlock language="env">
+
+{`# Required in .env.local
+CONVEX_DEPLOYMENT=dev:your-project-name
+NEXT_PUBLIC_CONVEX_URL=https://your-project.convex.cloud`}
+</CodeBlock>
+
+      For auth components, you also need:
+
+      <CodeBlock language="env">
+
+{`CONVEX_SITE_URL=http://localhost:3000`}
+</CodeBlock>
+
+      <Callout type="info" className="mt-4">
+        Run `npx convex dev` to see your actual values in the terminal output.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="schema-conflict">
+    <AccordionTrigger>Schema type errors after adding components</AccordionTrigger>
+    <AccordionContent>
+      If you see TypeScript errors in `convex/schema.ts`, you likely have conflicting table definitions.
+
+      **To fix:**
+      1. Open `convex/schema.ts`
+      2. Merge any duplicate table definitions
+      3. Ensure all index names are unique
+      4. Run `npx convex dev` to validate
+
+      <Callout type="warn" className="mt-4">
+        Each table can only be defined once. Combine fields from both definitions if needed.
+      </Callout>
+    </AccordionContent>
+
+  </AccordionItem>
+
+  <AccordionItem value="auth-not-working">
+    <AccordionTrigger>Authentication isn't working</AccordionTrigger>
+    <AccordionContent>
+      Common auth issues and fixes:
+
+      | Issue | Solution |
+      |-------|----------|
+      | "Invalid URL" error | Check `CONVEX_SITE_URL` matches your dev server |
+      | OAuth redirect fails | Verify callback URLs in provider settings |
+      | Session not persisting | Ensure `ConvexAuthNextjsServerProvider` wraps your app |
+      | "Not authenticated" | Check that `proxy.ts` (Next.js) is in `src/` |
+
+      See the [auth troubleshooting guide](/ui/docs/nextjs/password-based-auth#troubleshooting) for more details.
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>

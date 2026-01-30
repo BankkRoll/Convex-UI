@@ -1,0 +1,83 @@
+---
+title: Realtime Avatar Stack
+description: Avatar stack showing online users in realtime
+---
+
+<BlockPreview name="realtime-avatar-stack-demo" />
+
+## Installation
+
+<BlockItem
+  name="realtime-avatar-stack-react-router"
+  description="Renders a stack of avatars showing online users via Convex"
+/>
+
+## Folder structure
+
+<RegistryBlock itemName="realtime-avatar-stack-react-router" />
+
+## Usage
+
+The `RealtimeAvatarStack` component renders stacked avatars of online users connected to a room. It uses Convex real-time queries with a heartbeat pattern for presence tracking. You can use this to show currently online users in a chatroom, game session, or collaborative app.
+
+<CodeBlock language="tsx">{`import { RealtimeAvatarStack } from "@/components/realtime-avatar-stack";
+
+export default function Page() {
+  return (
+    <Header className="flex items-center justify-between">
+      <h1>Lumon Industries</h1>
+      <RealtimeAvatarStack roomName="break_room" username="Mark Scout" />
+    </Header>
+  );
+}`}</CodeBlock>
+
+## How it works
+
+The component uses a heartbeat pattern for presence:
+
+1. **Join room**: When the component mounts, it calls a mutation to register the user in the room
+2. **Heartbeat**: Periodically (every 10s by default), it sends a heartbeat to confirm the user is still active
+3. **Leave room**: On unmount, it calls a mutation to remove the user from the room
+
+<CodeBlock language="ts">{`// convex/presence.ts
+import { query, mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const listRoom = query({
+  args: { roomName: v.string() },
+  handler: async (ctx, args) => {
+    const cutoff = Date.now() - 30000; // 30 second timeout
+    return await ctx.db
+      .query("roomPresence")
+      .withIndex("by_room", (q) => q.eq("roomName", args.roomName))
+      .filter((q) => q.gt(q.field("lastSeen"), cutoff))
+      .collect();
+  },
+});
+
+export const joinRoom = mutation({
+  args: { roomName: v.string(), username: v.string() },
+  handler: async (ctx, args) => {
+    // Add or update user presence with timestamp
+  },
+});
+
+export const leaveRoom = mutation({
+  args: { oderId: v.string() },
+  handler: async (ctx, args) => {
+    // Remove user from room
+  },
+});`}</CodeBlock>
+
+## Props
+
+| Prop       | Type                   | Default | Description                               |
+| ---------- | ---------------------- | ------- | ----------------------------------------- |
+| `roomName` | `string`               | -       | The name of the room to track presence in |
+| `username` | `string`               | -       | The current user's display name           |
+| `size`     | `"sm" \| "md" \| "lg"` | `"md"`  | Size of the avatars                       |
+
+## Further reading
+
+- [Convex Real-time Queries](https://docs.convex.dev/client/react/queries)
+- [Building Presence Features](https://docs.convex.dev/production/best-practices)

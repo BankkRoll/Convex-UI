@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropzone-react",
+  "type": "registry:component",
+  "title": "Dropzone (React)",
+  "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
+  "registryDependencies": ["button"],
+  "dependencies": ["lucide-react", "react-dropzone", "convex@latest"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/dropzone-react/components/dropzone.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/dropzone-react/hooks/use-convex-upload.ts",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/dropzone-react/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/dropzone-react/convex/files.ts",
+      "type": "registry:file",
+      "target": "convex/files.ts"
+    }
+  ]
+}

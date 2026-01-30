@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-react",
+  "type": "registry:lib",
+  "title": "Convex Client for React",
+  "description": "Convex client setup for React (Vite) with authentication support",
+  "registryDependencies": [],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "envVars": {
+    "VITE_CONVEX_URL": ""
+  },
+  "files": [
+    {
+      "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+      "type": "registry:lib"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+---
+title: Current User Avatar
+description: Convex Auth-aware avatar component
+---
+
+<ComponentPreview name="current-user-avatar-demo" showCode={false} />
+
+## Installation
+
+<BlockItem
+  name="current-user-avatar-nextjs"
+  description="Renders the avatar of the current user."
+/>
+
+## Folder structure
+
+<RegistryBlock itemName="current-user-avatar-nextjs" />
+
+## Introduction
+
+The `CurrentUserAvatar` component connects to Convex Auth to fetch the current user's data and display an avatar. It queries the user's profile information and shows their profile image if available. If the user doesn't have a profile image, it renders their initials. If the user is logged out, it renders a `?` as a fallback, which you can customize.
+
+## Usage
+
+The `CurrentUserAvatar` component is designed to be used anywhere in your app. Add the `<CurrentUserAvatar />` component to your page and it will render the avatar of the current user, with a fallback.
+
+<CodeBlock language="tsx">
+{`"use client";
+
+import { CurrentUserAvatar } from "@/components/current-user-avatar";
+
+const CurrentUserAvatarDemo = () => {
+return (
+<Header className="flex items-center justify-between">
+<h1>Lumon Industries</h1>
+<CurrentUserAvatar />
+</Header>
+);
+};
+
+export default CurrentUserAvatarDemo;`}
+</CodeBlock>
+
+## How it works
+
+The component uses Convex queries to fetch the current user's information:
+
+<CodeBlock language="tsx">
+{`import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+// Fetch current user data
+const user = useQuery(api.users.current);
+const name = user?.name ?? null;
+const image = user?.image ?? null;`}
+
+</CodeBlock>
+
+This requires a `users.current` query in your Convex backend:
+
+<CodeBlock language="ts">
+{`// convex/users.ts
+import { query } from "./_generated/server";
+import { getAuthUserId } from "@convex-dev/auth/server";
+
+export const current = query({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) return null;
+    return await ctx.db.get(userId);
+  },
+});`}
+</CodeBlock>
+
+## Props
+
+| Prop   | Type                   | Default | Description        |
+| ------ | ---------------------- | ------- | ------------------ |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"`  | Size of the avatar |
+
+If you wish to change the fallback behavior, you can modify the `CurrentUserAvatar` component directly.
+
+## Further reading
+
+- [Convex Auth Documentation](https://docs.convex.dev/auth)
+- [Getting the Current User](https://labs.convex.dev/auth/api_reference/server#getauthuserId)

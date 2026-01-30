@@ -1,0 +1,166 @@
+---
+title: Introduction
+description: A flexible, open-source, React-based UI component library built on shadcn/ui, designed to simplify Convex-powered projects with pre-built Auth, Storage, and Realtime features.
+---
+
+<Callout className="mb-8">
+  Build production-ready Convex applications in minutes, not hours. One command
+  installs complete features with frontend components **and** backend functions.
+</Callout>
+
+## What is Convex UI?
+
+Convex UI is a collection of **copy-paste components** built on [shadcn/ui](https://ui.shadcn.com) that integrate seamlessly with [Convex](https://convex.dev). Each component comes with:
+
+- React frontend components (styled with Tailwind CSS)
+- Convex backend functions (queries, mutations, schema)
+- Full TypeScript support
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+  <Card>
+    <div className="flex flex-col items-center text-center">
+      <svg
+        className="w-8 h-8 mb-3 text-brand"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      </svg>
+      <h3 className="font-semibold text-foreground">Authentication</h3>
+      <p className="text-sm text-muted-foreground mt-1">
+        Password & social login flows with Convex Auth
+      </p>
+    </div>
+  </Card>
+  <Card>
+    <div className="flex flex-col items-center text-center">
+      <svg
+        className="w-8 h-8 mb-3 text-brand"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+        />
+      </svg>
+      <h3 className="font-semibold text-foreground">File Storage</h3>
+      <p className="text-sm text-muted-foreground mt-1">
+        Drag-and-drop uploads with Convex Storage
+      </p>
+    </div>
+  </Card>
+  <Card>
+    <div className="flex flex-col items-center text-center">
+      <svg
+        className="w-8 h-8 mb-3 text-brand"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+        />
+      </svg>
+      <h3 className="font-semibold text-foreground">Realtime Chat</h3>
+      <p className="text-sm text-muted-foreground mt-1">
+        Instant messaging with automatic sync
+      </p>
+    </div>
+  </Card>
+  <Card>
+    <div className="flex flex-col items-center text-center">
+      <svg
+        className="w-8 h-8 mb-3 text-brand"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+        />
+      </svg>
+      <h3 className="font-semibold text-foreground">Realtime Cursors</h3>
+      <p className="text-sm text-muted-foreground mt-1">
+        Collaborative presence indicators
+      </p>
+    </div>
+  </Card>
+</div>
+
+## See it in action
+
+Here's what you get with a single command:
+
+<BlockPreview name="password-based-auth/auth/sign-up" />
+
+## How it works
+
+<Command name="password-based-auth-nextjs" />
+
+This single command:
+
+1. **Installs dependencies** - Convex, auth packages, UI components
+2. **Creates React components** - Login forms, buttons, layouts
+3. **Sets up Convex backend** - Schema, queries, mutations, auth config
+4. **Configures environment** - Environment variables template
+
+<Callout type="info" className="mt-6">
+  **Your code, your control.** Unlike traditional libraries, these components
+  are copied directly into your project. Customize anything - styles, logic,
+  backend functions.
+</Callout>
+
+## Why Convex UI?
+
+### Real-time by default
+
+Convex provides reactive queries out of the box. When data changes, your UI updates automatically - no polling, no WebSocket setup, no cache invalidation.
+
+<CodeBlock language="tsx">
+  {`// This automatically re-renders when messages change
+const messages = useQuery(api.messages.list, { roomId: "general" });`}
+</CodeBlock>
+
+### Full-stack in one place
+
+Each block includes both frontend and backend code. No separate API layer to maintain.
+
+<CodeBlock language="text">
+  {`your-project/
+├── src/components/
+│   └── login-form.tsx      # React component
+└── convex/
+    ├── auth.ts             # Auth functions
+    └── schema.ts           # Database schema`}
+</CodeBlock>
+
+### Framework support
+
+Works with your preferred React framework:
+
+| Framework      | Auth | Storage | Realtime |
+| -------------- | ---- | ------- | -------- |
+| Next.js        | ✓    | ✓       | ✓        |
+| React SPA      | ✓    | ✓       | ✓        |
+| React Router   | ✓    | ✓       | ✓        |
+| TanStack Start | ✓    | ✓       | ✓        |
+
+## Get started
+
+Ready to build? Head to the [Quick Start](/ui/docs/getting-started/quickstart) guide to set up your project.

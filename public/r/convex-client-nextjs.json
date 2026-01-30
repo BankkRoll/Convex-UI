@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-nextjs",
+  "title": "Convex Client for Next.js",
+  "description": "Convex client setup for Next.js with authentication support",
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+      "content": "\"use client\";\n\nimport { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL!;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+      "content": "\"use client\";\n\nimport { ConvexAuthNextjsProvider } from \"@convex-dev/auth/nextjs\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return (\n    <ConvexAuthNextjsProvider client={convex}>\n      {children}\n    </ConvexAuthNextjsProvider>\n  );\n}\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+      "content": "import {\n  fetchQuery,\n  fetchMutation,\n  fetchAction,\n  preloadQuery,\n} from \"convex/nextjs\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/proxy.ts",
+      "content": "import {\n  convexAuthNextjsMiddleware,\n  createRouteMatcher,\n} from \"@convex-dev/auth/nextjs/server\";\n\nconst isProtectedRoute = createRouteMatcher([\"/protected(.*)\"]);\n\n// Named export for Next.js 16+ (proxy.ts)\nexport const proxy = convexAuthNextjsMiddleware((request, { convexAuth }) => {\n  if (isProtectedRoute(request) && !convexAuth.isAuthenticated()) {\n    return Response.redirect(new URL(\"/auth/login\", request.url));\n  }\n});\n\nexport const config = {\n  matcher: [\"/((?!.*\\\\..*|_next).*)\", \"/\", \"/(api|trpc)(.*)\"],\n};\n",
+      "type": "registry:lib",
+      "target": "src/proxy.ts"
+    }
+  ],
+  "envVars": {
+    "NEXT_PUBLIC_CONVEX_URL": ""
+  },
+  "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "type": "registry:lib"
+}

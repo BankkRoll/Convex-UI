@@ -1,0 +1,112 @@
+{
+  "name": "convex-light",
+  "displayName": "Convex Light",
+  "type": "light",
+  "colors": {
+    "editor.background": "#ffffff",
+    "editor.foreground": "#1f1f1f"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment", "string.comment"],
+      "settings": {
+        "foreground": "#7e7e7e",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "constant",
+        "entity.name.constant",
+        "variable.other.constant",
+        "constant.language"
+      ],
+      "settings": {
+        "foreground": "#15593b"
+      }
+    },
+    {
+      "scope": [
+        "entity",
+        "entity.name",
+        "entity.name.type",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#15593b"
+      }
+    },
+    {
+      "scope": ["variable", "support.variable", "variable.parameter"],
+      "settings": {
+        "foreground": "#1f1f1f"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "storage.type",
+        "storage.modifier",
+        "keyword.control"
+      ],
+      "settings": {
+        "foreground": "#6b35dc"
+      }
+    },
+    {
+      "scope": [
+        "string",
+        "constant.other.symbol",
+        "constant.other.key",
+        "string.quoted"
+      ],
+      "settings": {
+        "foreground": "#f1a10d"
+      }
+    },
+    {
+      "scope": [
+        "support.function",
+        "entity.name.function",
+        "meta.function-call"
+      ],
+      "settings": {
+        "foreground": "#15593b"
+      }
+    },
+    {
+      "scope": [
+        "punctuation",
+        "punctuation.separator",
+        "meta.brace",
+        "punctuation.definition"
+      ],
+      "settings": {
+        "foreground": "#1f1f1f"
+      }
+    },
+    {
+      "scope": ["meta.tag", "entity.name.tag"],
+      "settings": {
+        "foreground": "#15593b"
+      }
+    },
+    {
+      "scope": [
+        "entity.other.attribute-name",
+        "support.type.property-name",
+        "meta.object-literal.key"
+      ],
+      "settings": {
+        "foreground": "#15593b"
+      }
+    },
+    {
+      "scope": ["meta.import", "string.quoted.single", "string.quoted.double"],
+      "settings": {
+        "foreground": "#f1a10d"
+      }
+    }
+  ]
+}

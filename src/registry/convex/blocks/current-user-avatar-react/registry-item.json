@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "current-user-avatar-react",
+  "type": "registry:component",
+  "title": "Current User Avatar (React)",
+  "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+  "registryDependencies": ["avatar", "skeleton"],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-react/components/current-user-avatar.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-image.ts",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-name.ts",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-react/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-react/convex/users.ts",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    }
+  ]
+}

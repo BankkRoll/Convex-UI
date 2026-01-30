@@ -1,0 +1,146 @@
+---
+title: Dropzone (File Upload)
+description: Displays a control for easier uploading of files directly to Convex Storage
+---
+
+<Badge variant="secondary" className="mb-4">
+  New
+</Badge>
+
+<ComponentPreview
+  name="dropzone-demo"
+  description="An alert with an icon, title and description. The title says 'Heads up!' and the description is 'You can add components to your app using the cli.'."
+  showCode={false}
+/>
+
+## Installation
+
+<BlockItem
+  name="dropzone-nextjs"
+  description="Displays a control for easier uploading of files directly to Convex Storage"
+/>
+
+## Folder structure
+
+<RegistryBlock itemName="dropzone-nextjs" />
+
+## Introduction
+
+Uploading files should be easy—this component handles the tricky parts for you.
+
+The File Upload component makes it easy to add file uploads to your app, with built-in support for drag-and-drop, file type restrictions, image previews, and configurable limits on file size and number of files. All the essentials, ready to go.
+
+**Features**
+
+- Drag-and-drop support
+- Multiple file uploads
+- File size and count limits
+- Image previews for supported file types
+- MIME type restrictions
+- Invalid file handling
+- Success and error states with clear feedback
+- Automatic upload to Convex Storage
+
+## Usage
+
+Simply add the `<Dropzone />` component to your page and it will handle the rest. Use the `useConvexUpload` hook for control over file uploads.
+
+<CodeBlock language="tsx">
+{`"use client";
+
+import {
+  Dropzone,
+  DropzoneContent,
+  DropzoneEmptyState,
+} from "@/components/dropzone";
+import { useConvexUpload } from "@/hooks/use-convex-upload";
+
+const FileUploadDemo = () => {
+const props = useConvexUpload({
+allowedMimeTypes: ["image/*"],
+maxFiles: 2,
+maxFileSize: 1000 _ 1000 _ 10, // 10MB,
+});
+
+return (
+<div className="w-[500px]">
+<Dropzone {...props}>
+<DropzoneEmptyState />
+<DropzoneContent />
+</Dropzone>
+</div>
+);
+};
+
+export { FileUploadDemo };`}
+</CodeBlock>
+
+## How it works
+
+The upload process uses Convex's file storage system:
+
+1. **Generate upload URL**: The hook calls a Convex mutation to generate a secure upload URL
+2. **Upload file**: The file is uploaded directly to Convex Storage using the generated URL
+3. **Save metadata**: After upload, file metadata (storage ID, name, size, type) is saved to your Convex database
+
+<CodeBlock language="ts">
+{`// Example Convex functions for file upload
+// convex/files.ts
+
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const generateUploadUrl = mutation(async (ctx) => {
+  return await ctx.storage.generateUploadUrl();
+});
+
+export const saveFile = mutation({
+  args: {
+    storageId: v.id("_storage"),
+    name: v.string(),
+    size: v.number(),
+    type: v.string(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("files", args);
+  },
+});`}
+</CodeBlock>
+
+## Component API
+
+### Dropzone
+
+The main dropzone component that handles file upload UI.
+
+| Prop        | Type                    | Default     | Description                                               |
+| ----------- | ----------------------- | ----------- | --------------------------------------------------------- |
+| `upload`    | `UseConvexUploadReturn` | Required    | Upload state and handlers from the `useConvexUpload` hook |
+| `className` | `string`                | `undefined` | Optional CSS classes for styling                          |
+
+### useConvexUpload Hook
+
+Configuration options for the upload hook that handles file validation and Convex Storage integration.
+
+| Prop               | Type       | Default    | Description                                                                                 |
+| ------------------ | ---------- | ---------- | ------------------------------------------------------------------------------------------- |
+| `allowedMimeTypes` | `string[]` | `[]`       | MIME types to allow (e.g., `["image/*", "application/pdf"]`). Empty array allows all types. |
+| `maxFiles`         | `number`   | `1`        | Maximum number of files to upload at once                                                   |
+| `maxFileSize`      | `number`   | `10485760` | Maximum file size in bytes (default: 10MB)                                                  |
+
+## How Convex Works Locally
+
+Convex makes local file storage development seamless:
+
+1. **Run `npx convex dev`** - Starts your local Convex backend with file storage
+2. **Files stored locally** - During development, uploaded files are stored in your local Convex deployment
+3. **Schema for file metadata** - Define a `files` table in `convex/schema.ts` to store file metadata
+4. **Backend functions** - Upload functions live in your `convex/` directory (e.g., `convex/files.ts`)
+
+No external storage configuration needed for development! When you deploy with `npx convex deploy`, your files are automatically stored in Convex's cloud storage.
+
+## Further reading
+
+- [Convex File Storage](https://docs.convex.dev/file-storage)
+- [Uploading Files](https://docs.convex.dev/file-storage/upload-files)
+- [Serving Files](https://docs.convex.dev/file-storage/serve-files)

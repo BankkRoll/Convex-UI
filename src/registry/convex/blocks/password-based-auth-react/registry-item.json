@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "password-based-auth-react",
+  "type": "registry:block",
+  "title": "Password-Based Authentication (React)",
+  "description": "Password-based authentication components for React with Convex Auth. Includes login, sign-up forms, and full Convex backend.",
+  "registryDependencies": ["button", "input", "label", "card", "alert"],
+  "dependencies": ["lucide-react", "@convex-dev/auth@latest", "convex@latest"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/components/login-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/components/sign-up-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/convex/auth.ts",
+      "type": "registry:file",
+      "target": "convex/auth.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/convex/auth.config.ts",
+      "type": "registry:file",
+      "target": "convex/auth.config.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/convex/users.ts",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-react/convex/http.ts",
+      "type": "registry:file",
+      "target": "convex/http.ts"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "VITE_CONVEX_URL": ""
+  }
+}

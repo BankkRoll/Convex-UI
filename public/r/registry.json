@@ -1,0 +1,1868 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Convex UI Library",
+  "homepage": "https://convex-ui.vercel.app",
+  "items": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "password-based-auth-nextjs",
+      "type": "registry:block",
+      "title": "Password-Based Authentication (Next.js)",
+      "description": "Complete password-based authentication flow for Next.js with Convex Auth. Includes login, sign-up, password reset, protected routes, and full Convex backend.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "card",
+        "alert",
+        "avatar",
+        "skeleton"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/sign-up-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/forgot-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/update-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/login/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/login/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/sign-up/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/sign-up/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/forgot-password/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/forgot-password/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/update-password/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/update-password/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/sign-up-success/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/sign-up-success/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/protected/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/protected/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "password-based-auth-react",
+      "type": "registry:block",
+      "title": "Password-Based Authentication (React)",
+      "description": "Password-based authentication components for React with Convex Auth. Includes login, sign-up forms, and full Convex backend.",
+      "registryDependencies": ["button", "input", "label", "card", "alert"],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/components/sign-up-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "password-based-auth-react-router",
+      "type": "registry:block",
+      "title": "Password-Based Authentication (React Router)",
+      "description": "Complete password-based authentication flow for React Router v7 with Convex Auth. Includes login, sign-up, password reset, protected routes, and full Convex backend.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "card",
+        "alert",
+        "avatar",
+        "skeleton"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "react-router"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/components/sign-up-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/components/forgot-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/components/update-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/auth.login.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.login.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/auth.sign-up.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.sign-up.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/auth.forgot-password.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.forgot-password.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/auth.update-password.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.update-password.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/auth.sign-up-success.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.sign-up-success.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/app/routes/protected.tsx",
+          "type": "registry:page",
+          "target": "app/routes/protected.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react-router/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "password-based-auth-tanstack",
+      "type": "registry:block",
+      "title": "Password-Based Authentication (TanStack)",
+      "description": "Complete password-based authentication flow for TanStack Start with Convex Auth. Includes login, sign-up, password reset, protected routes, and full Convex backend.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "card",
+        "alert",
+        "avatar",
+        "skeleton"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "@tanstack/react-router",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/sign-up-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/forgot-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/update-password-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/login.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/login.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/sign-up.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/forgot-password.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/forgot-password.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/update-password.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/update-password.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up-success.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/sign-up-success.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/_protected/index.tsx",
+          "type": "registry:page",
+          "target": "routes/_protected/index.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-auth-nextjs",
+      "type": "registry:block",
+      "title": "Social Authentication (Next.js)",
+      "description": "Social authentication (OAuth) for Next.js with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
+      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "@auth/core"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/app/auth/login/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/auth/login/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/app/protected/page.tsx",
+          "type": "registry:page",
+          "target": "src/app/protected/page.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-nextjs/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "NEXT_PUBLIC_CONVEX_URL": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-auth-react",
+      "type": "registry:block",
+      "title": "Social Authentication (React)",
+      "description": "Social authentication (OAuth) components for React with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
+      "registryDependencies": ["button", "card", "alert"],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "@auth/core"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-auth-react-router",
+      "type": "registry:block",
+      "title": "Social Authentication (React Router)",
+      "description": "Social authentication (OAuth) for React Router v7 with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
+      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "@auth/core",
+        "react-router"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/app/routes/auth.login.tsx",
+          "type": "registry:page",
+          "target": "app/routes/auth.login.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/app/routes/protected.tsx",
+          "type": "registry:page",
+          "target": "app/routes/protected.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react-router/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-auth-tanstack",
+      "type": "registry:block",
+      "title": "Social Authentication (TanStack)",
+      "description": "Social authentication (OAuth) for TanStack Start with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
+      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
+      "dependencies": [
+        "lucide-react",
+        "@convex-dev/auth@latest",
+        "convex@latest",
+        "@auth/core",
+        "@tanstack/react-router",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/components/login-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/components/logout-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/routes/auth/login.tsx",
+          "type": "registry:page",
+          "target": "routes/auth/login.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/routes/_protected/index.tsx",
+          "type": "registry:page",
+          "target": "routes/_protected/index.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/convex/auth.ts",
+          "type": "registry:file",
+          "target": "convex/auth.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/convex/auth.config.ts",
+          "type": "registry:file",
+          "target": "convex/auth.config.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-tanstack/convex/http.ts",
+          "type": "registry:file",
+          "target": "convex/http.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "envVars": {
+        "CONVEX_DEPLOYMENT": "",
+        "VITE_CONVEX_URL": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
+      },
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-chat-nextjs",
+      "type": "registry:component",
+      "title": "Realtime Chat (Next.js)",
+      "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
+      "registryDependencies": ["input", "button"],
+      "dependencies": [
+        "lucide-react",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/chat-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/realtime-chat.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-realtime-chat.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-chat-scroll.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-nextjs/convex/messages.ts",
+          "type": "registry:file",
+          "target": "convex/messages.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-chat-react",
+      "type": "registry:component",
+      "title": "Realtime Chat (React)",
+      "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
+      "registryDependencies": ["input", "button"],
+      "dependencies": [
+        "lucide-react",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/components/chat-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/components/realtime-chat.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/hooks/use-realtime-chat.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/hooks/use-chat-scroll.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react/convex/messages.ts",
+          "type": "registry:file",
+          "target": "convex/messages.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-chat-react-router",
+      "type": "registry:component",
+      "title": "Realtime Chat (React Router)",
+      "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
+      "registryDependencies": ["input", "button"],
+      "dependencies": [
+        "lucide-react",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/components/chat-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/components/realtime-chat.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/hooks/use-realtime-chat.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/hooks/use-chat-scroll.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-react-router/convex/messages.ts",
+          "type": "registry:file",
+          "target": "convex/messages.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-chat-tanstack",
+      "type": "registry:component",
+      "title": "Realtime Chat (TanStack Start)",
+      "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
+      "registryDependencies": ["input", "button"],
+      "dependencies": [
+        "lucide-react",
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/components/chat-message.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/components/realtime-chat.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/hooks/use-realtime-chat.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/hooks/use-chat-scroll.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-chat-tanstack/convex/messages.ts",
+          "type": "registry:file",
+          "target": "convex/messages.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-cursor-nextjs",
+      "type": "registry:component",
+      "title": "Realtime Cursors (Next.js)",
+      "description": "Display realtime cursor positions of other users in a room. Perfect for collaborative applications. Includes full Convex backend with presence tracking.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-nextjs/components/cursor.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-nextjs/components/realtime-cursors.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-nextjs/hooks/use-realtime-cursors.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-nextjs/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-cursor-react",
+      "type": "registry:component",
+      "title": "Realtime Cursors (React)",
+      "description": "Display realtime cursor positions of other users in a room. Perfect for collaborative applications. Includes full Convex backend with presence tracking.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react/components/cursor.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react/components/realtime-cursors.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react/hooks/use-realtime-cursors.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-cursor-react-router",
+      "type": "registry:component",
+      "title": "Realtime Cursors (React Router)",
+      "description": "Display realtime cursor positions of other users in a room. Perfect for collaborative applications. Includes full Convex backend with presence tracking.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react-router/components/cursor.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react-router/components/realtime-cursors.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react-router/hooks/use-realtime-cursors.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-react-router/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-cursor-tanstack",
+      "type": "registry:component",
+      "title": "Realtime Cursors (TanStack Start)",
+      "description": "Display realtime cursor positions of other users in a room. Perfect for collaborative applications. Includes full Convex backend with presence tracking.",
+      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-tanstack/components/cursor.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-tanstack/components/realtime-cursors.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-tanstack/hooks/use-realtime-cursors.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-cursor-tanstack/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-avatar-stack-nextjs",
+      "type": "registry:component",
+      "title": "Realtime Avatar Stack (Next.js)",
+      "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
+      "registryDependencies": ["avatar", "tooltip"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/realtime-avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/hooks/use-realtime-presence-room.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-avatar-stack-react",
+      "type": "registry:component",
+      "title": "Realtime Avatar Stack (React)",
+      "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
+      "registryDependencies": ["avatar", "tooltip"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react/components/avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react/components/realtime-avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react/hooks/use-realtime-presence-room.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-avatar-stack-react-router",
+      "type": "registry:component",
+      "title": "Realtime Avatar Stack (React Router)",
+      "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
+      "registryDependencies": ["avatar", "tooltip"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react-router/components/avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react-router/components/realtime-avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react-router/hooks/use-realtime-presence-room.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-react-router/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "realtime-avatar-stack-tanstack",
+      "type": "registry:component",
+      "title": "Realtime Avatar Stack (TanStack Start)",
+      "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
+      "registryDependencies": ["avatar", "tooltip"],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/realtime-avatar-stack.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/hooks/use-realtime-presence-room.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/convex/presence.ts",
+          "type": "registry:file",
+          "target": "convex/presence.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dropzone-nextjs",
+      "type": "registry:component",
+      "title": "Dropzone (Next.js)",
+      "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
+      "registryDependencies": ["button"],
+      "dependencies": [
+        "lucide-react",
+        "react-dropzone",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/dropzone-nextjs/components/dropzone.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-nextjs/hooks/use-convex-upload.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-nextjs/convex/files.ts",
+          "type": "registry:file",
+          "target": "convex/files.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dropzone-react",
+      "type": "registry:component",
+      "title": "Dropzone (React)",
+      "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
+      "registryDependencies": ["button"],
+      "dependencies": [
+        "lucide-react",
+        "react-dropzone",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/dropzone-react/components/dropzone.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react/hooks/use-convex-upload.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react/convex/files.ts",
+          "type": "registry:file",
+          "target": "convex/files.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dropzone-react-router",
+      "type": "registry:component",
+      "title": "Dropzone (React Router)",
+      "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
+      "registryDependencies": ["button"],
+      "dependencies": [
+        "lucide-react",
+        "react-dropzone",
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/dropzone-react-router/components/dropzone.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react-router/hooks/use-convex-upload.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-react-router/convex/files.ts",
+          "type": "registry:file",
+          "target": "convex/files.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dropzone-tanstack",
+      "type": "registry:component",
+      "title": "Dropzone (TanStack Start)",
+      "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
+      "registryDependencies": ["button"],
+      "dependencies": [
+        "lucide-react",
+        "react-dropzone",
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/dropzone-tanstack/components/dropzone.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-tanstack/hooks/use-convex-upload.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/dropzone-tanstack/convex/files.ts",
+          "type": "registry:file",
+          "target": "convex/files.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "current-user-avatar-nextjs",
+      "type": "registry:component",
+      "title": "Current User Avatar (Next.js)",
+      "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+      "registryDependencies": ["avatar", "skeleton"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-nextjs/components/current-user-avatar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-image.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-name.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-nextjs/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-nextjs/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "current-user-avatar-react",
+      "type": "registry:component",
+      "title": "Current User Avatar (React)",
+      "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+      "registryDependencies": ["avatar", "skeleton"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react/components/current-user-avatar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-image.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-name.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "current-user-avatar-react-router",
+      "type": "registry:component",
+      "title": "Current User Avatar (React Router)",
+      "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+      "registryDependencies": ["avatar", "skeleton"],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react-router/components/current-user-avatar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react-router/hooks/use-current-user-image.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react-router/hooks/use-current-user-name.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react-router/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-react-router/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "current-user-avatar-tanstack",
+      "type": "registry:component",
+      "title": "Current User Avatar (TanStack Start)",
+      "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+      "registryDependencies": ["avatar", "skeleton"],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "files": [
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-tanstack/components/current-user-avatar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-tanstack/hooks/use-current-user-image.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-tanstack/hooks/use-current-user-name.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-tanstack/convex/schema.ts",
+          "type": "registry:file",
+          "target": "convex/schema.ts"
+        },
+        {
+          "path": "src/registry/convex/blocks/current-user-avatar-tanstack/convex/users.ts",
+          "type": "registry:file",
+          "target": "convex/users.ts"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "convex-client-nextjs",
+      "type": "registry:lib",
+      "title": "Convex Client for Next.js",
+      "description": "Convex client setup for Next.js with authentication support",
+      "registryDependencies": [],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "NEXT_PUBLIC_CONVEX_URL": ""
+      },
+      "files": [
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/nextjs/proxy.ts",
+          "type": "registry:lib",
+          "target": "src/proxy.ts"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "convex-client-react",
+      "type": "registry:lib",
+      "title": "Convex Client for React",
+      "description": "Convex client setup for React (Vite) with authentication support",
+      "registryDependencies": [],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      },
+      "files": [
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "convex-client-tanstack",
+      "type": "registry:lib",
+      "title": "Convex Client for TanStack Start",
+      "description": "Convex client setup for TanStack Start with React Query integration and authentication support",
+      "registryDependencies": [],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest",
+        "@convex-dev/react-query@latest",
+        "@tanstack/react-query@latest"
+      ],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      },
+      "files": [
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "convex-client-react-router",
+      "type": "registry:lib",
+      "title": "Convex Client for React Router",
+      "description": "Convex client setup for React Router v7 with authentication support",
+      "registryDependencies": [],
+      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "envVars": {
+        "VITE_CONVEX_URL": ""
+      },
+      "files": [
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/client.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/registry/convex/clients/react-router/lib/convex/provider.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+/* mdx.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CUSTOM UTILITIES FOR TAILWIND */
+@layer utilities {
+  .text-foreground-muted {
+    color: hsl(var(--muted-foreground));
+  }
+  .border-foreground-muted {
+    border-color: hsl(var(--muted-foreground));
+  }
+  .bg-surface-100 {
+    background-color: hsl(var(--card));
+  }
+  .bg-surface-200 {
+    background-color: hsl(var(--popover));
+  }
+}
+
+/* MDX CODE BLOCKS - rehype-pretty-code v0.14+ */
+
+/* Figure wrapper from rehype-pretty-code */
+[data-rehype-pretty-code-figure] {
+  @apply relative my-6;
+}
+
+/* Pre element styling */
+[data-rehype-pretty-code-figure] pre {
+  @apply overflow-x-auto rounded-lg border border-border bg-card py-4 text-sm max-h-[650px];
+}
+
+/* Code element */
+[data-rehype-pretty-code-figure] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 font-mono;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+/* Line styling */
+[data-rehype-pretty-code-figure] code [data-line] {
+  @apply px-4 min-h-[1.5rem] py-0.5 w-full inline-block leading-relaxed;
+}
+
+/* Dual theme support - Dark */
+[data-theme="dark"] [data-rehype-pretty-code-figure] code span,
+[data-theme="classic-dark"] [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark) !important;
+}
+
+/* Dual theme support - Light */
+[data-theme="light"] [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-light) !important;
+}
+
+/* Default to dark theme when no data-theme set */
+:root:not([data-theme]) [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark) !important;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) [data-rehype-pretty-code-figure] code span {
+    color: var(--shiki-light) !important;
+  }
+}
+
+/* Line numbers */
+[data-rehype-pretty-code-figure] [data-line-numbers] [data-line] {
+  @apply px-2;
+}
+
+[data-rehype-pretty-code-figure] [data-line-numbers] > [data-line]::before {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.8rem;
+  margin-right: 1.4rem;
+  text-align: right;
+}
+
+/* Highlighted lines */
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  @apply relative bg-muted/50;
+  border-left: 2px solid hsl(var(--muted-foreground));
+}
+
+/* Highlighted characters/words */
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  @apply rounded px-1 py-0.5 bg-muted;
+}
+
+/* Code title/caption */
+[data-rehype-pretty-code-title] {
+  @apply rounded-t-lg border border-b-0 border-border bg-muted px-4 py-2 text-sm font-medium text-foreground;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply rounded-t-none mt-0;
+}
+
+/* Plain pre blocks without syntax highlighting (no language specified) */
+/* Exclude pre inside code-block-content (CodeBlock component) */
+.mdx pre:not([data-theme]):not(.shiki) {
+  @apply overflow-x-auto rounded-lg border border-border bg-card p-4 text-sm font-mono my-6 text-foreground;
+}
+
+.mdx pre:not([data-theme]):not(.shiki) code {
+  @apply bg-transparent p-0;
+}
+
+/* SHIKI CODE BLOCKS (CodeBlock component and tree view) */
+.shiki-wrapper .shiki,
+.code-block-content .shiki {
+  @apply h-full;
+}
+
+/* Force transparent background on pre inside code-block-content */
+.code-block-content pre,
+.code-block-content pre.shiki {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.shiki-wrapper .shiki code,
+.code-block-content .shiki code {
+  @apply block min-w-full;
+  counter-reset: line;
+}
+
+.shiki-wrapper .shiki .line,
+.code-block-content .shiki .line {
+  @apply inline-block w-full min-h-[1.5rem] leading-relaxed;
+}
+
+/* Shiki dual theme support - Dark */
+[data-theme="dark"] .shiki,
+[data-theme="dark"] .shiki span,
+[data-theme="classic-dark"] .shiki,
+[data-theme="classic-dark"] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
+
+/* Shiki dual theme support - Light */
+[data-theme="light"] .shiki,
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: transparent !important;
+}
+
+/* Default to dark theme when no data-theme is set */
+:root:not([data-theme]) .shiki,
+:root:not([data-theme]) .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
+
+/* System preference fallback */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .shiki,
+  :root:not([data-theme]) .shiki span {
+    color: var(--shiki-light) !important;
+  }
+}
+
+/* STEPS */
+.mdx > .steps:first-child > h3:first-child {
+  @apply mt-0;
+}
+
+.steps > h3 {
+  @apply mt-8 mb-4 text-base font-semibold;
+}

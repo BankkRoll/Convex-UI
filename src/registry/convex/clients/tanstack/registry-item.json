@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-tanstack",
+  "type": "registry:lib",
+  "title": "Convex Client for TanStack Start",
+  "description": "Convex client setup for TanStack Start with React Query integration and authentication support",
+  "registryDependencies": [],
+  "dependencies": [
+    "convex@latest",
+    "@convex-dev/auth@latest",
+    "@convex-dev/react-query@latest",
+    "@tanstack/react-query@latest"
+  ],
+  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "envVars": {
+    "VITE_CONVEX_URL": ""
+  },
+  "files": [
+    {
+      "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
+      "type": "registry:lib"
+    }
+  ]
+}

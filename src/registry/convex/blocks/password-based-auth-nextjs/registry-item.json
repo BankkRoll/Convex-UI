@@ -1,0 +1,98 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "password-based-auth-nextjs",
+  "type": "registry:block",
+  "title": "Password-Based Authentication (Next.js)",
+  "description": "Complete password-based authentication flow for Next.js with Convex Auth. Includes login, sign-up, password reset, protected routes, and full Convex backend.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "card",
+    "alert",
+    "avatar",
+    "skeleton"
+  ],
+  "dependencies": ["lucide-react", "@convex-dev/auth@latest", "convex@latest"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/login-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/sign-up-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/forgot-password-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/update-password-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/logout-button.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/login/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/auth/login/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/sign-up/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/auth/sign-up/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/forgot-password/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/auth/forgot-password/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/update-password/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/auth/update-password/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/sign-up-success/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/auth/sign-up-success/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/protected/page.tsx",
+      "type": "registry:page",
+      "target": "src/app/protected/page.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/auth.ts",
+      "type": "registry:file",
+      "target": "convex/auth.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/auth.config.ts",
+      "type": "registry:file",
+      "target": "convex/auth.config.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/users.ts",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-nextjs/convex/http.ts",
+      "type": "registry:file",
+      "target": "convex/http.ts"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "NEXT_PUBLIC_CONVEX_URL": ""
+  }
+}

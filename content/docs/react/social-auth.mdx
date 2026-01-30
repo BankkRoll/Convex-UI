@@ -1,0 +1,206 @@
+---
+title: Social Authentication
+description: Social authentication block for React Single Page Applications
+---
+
+<Badge variant="secondary" className="mb-4">
+  New
+</Badge>
+
+OAuth authentication with GitHub and Google providers. Secure, one-click sign-in powered by Convex Auth. Easily extensible to support additional OAuth providers.
+
+<BlockPreview name="social-auth/auth/login" />
+
+<Callout className="mt-4">
+  The block uses GitHub and Google providers by default, but can be easily
+  customized by modifying the auth configuration to add more providers.
+</Callout>
+
+## Installation
+
+<BlockItem
+  name="social-auth-react"
+  description="All needed components for the social auth flow"
+/>
+
+## Folder structure
+
+This block includes the [Convex client](/ui/docs/react/client). If you already have one installed, you can skip overwriting it.
+
+<RegistryBlock itemName="social-auth-react" />
+
+## Usage
+
+Once you install the block in your React project, you'll get all the necessary pages and components to set up a social authentication flow.
+
+### Getting started
+
+After installing the block, you'll have the following environment variable in your `.env.local` file:
+
+<CodeBlock language="env">{`VITE_CONVEX_URL=`}</CodeBlock>
+
+**For local development:** Simply run `npx convex dev` which will automatically configure this environment variable. No dashboard or account needed to get started!
+
+### Setting up OAuth providers
+
+Social authentication requires setting up OAuth apps with each provider and configuring Convex to use them.
+
+#### 1. Configure authentication providers
+
+Create or update `convex/auth.config.ts` to enable social authentication:
+
+<CodeBlock language="ts">
+{`import GitHub from "@convex-dev/auth/providers/GitHub";
+import Google from "@convex-dev/auth/providers/Google";
+
+export default {
+  providers: [GitHub, Google],
+};`}
+</CodeBlock>
+
+This configures Convex Auth to accept OAuth sign-ins from GitHub and Google.
+
+#### 2. Set up auth tables in your schema
+
+Add the auth tables to `convex/schema.ts`:
+
+<CodeBlock language="ts">
+{`import { defineSchema } from "convex/server";
+import { authTables } from "@convex-dev/auth/server";
+
+export default defineSchema({
+  ...authTables,
+  // Your other tables go here
+});`}
+</CodeBlock>
+
+The `authTables` includes tables for users, sessions, and OAuth account linking.
+
+#### 3. Configure OAuth apps
+
+For each provider, you'll need to create an OAuth app and get credentials:
+
+**GitHub:**
+
+1. Go to GitHub Settings > Developer settings > OAuth Apps > New OAuth App
+2. Set Authorization callback URL to: `https://[your-deployment].convex.cloud/api/auth/callback/github`
+3. Copy the Client ID and Client Secret
+
+**Google:**
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing
+3. Enable Google+ API
+4. Create OAuth 2.0 credentials
+5. Set Authorized redirect URI to: `https://[your-deployment].convex.cloud/api/auth/callback/google`
+6. Copy the Client ID and Client Secret
+
+#### 4. Add environment variables
+
+For local development, add these to your `.env.local` (Convex will read them when you run `npx convex dev`):
+
+<CodeBlock language="env">
+  {`AUTH_GITHUB_ID=your_github_client_id
+AUTH_GITHUB_SECRET=your_github_client_secret
+AUTH_GOOGLE_ID=your_google_client_id
+AUTH_GOOGLE_SECRET=your_google_client_secret`}
+</CodeBlock>
+
+For production, add these same variables in your [Convex dashboard](https://dashboard.convex.dev) under Environment Variables.
+
+### Setting up routes
+
+Update the redirect paths in `login-form.tsx` to point to your app's logged-in routes. Our examples use `/protected`, but you can set this to whatever fits your app.
+
+### Combining social auth with password-based auth
+
+If you want to combine this block with the password-based auth, you can add both providers to your `auth.config.ts`:
+
+<CodeBlock language="ts">
+{`import { Password } from "@convex-dev/auth/providers/Password";
+import GitHub from "@convex-dev/auth/providers/GitHub";
+import Google from "@convex-dev/auth/providers/Google";
+
+export default {
+  providers: [Password, GitHub, Google],
+};`}
+</CodeBlock>
+
+## Component API
+
+The social authentication block includes a customizable login component. Below are its props and usage patterns.
+
+### SocialLoginForm
+
+The social login form component handles OAuth authentication with multiple providers.
+
+| Prop        | Type         | Default                | Description                                                                                            |
+| ----------- | ------------ | ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| `providers` | `Provider[]` | `["github", "google"]` | Array of OAuth providers to display. Each provider must be configured in your `convex/auth.config.ts`. |
+
+<CodeBlock language="tsx">
+{`import { SocialLoginForm } from "@/components/auth/login-form";
+
+// Use default providers (GitHub and Google)
+export default function LoginPage() {
+return <SocialLoginForm />;
+}
+
+// Or customize which providers to show
+export default function CustomLoginPage() {
+return <SocialLoginForm providers={["github"]} />;
+}`}
+
+</CodeBlock>
+
+**Available providers:**
+
+- `"github"` - GitHub OAuth
+- `"google"` - Google OAuth
+
+To add more providers, you'll need to configure them in your `convex/auth.config.ts` and update the login form component accordingly.
+
+## How Convex Works Locally
+
+Convex makes local development with OAuth simple:
+
+1. **Run `npx convex dev`** - Starts your local Convex backend
+2. **Add OAuth credentials to `.env.local`** - Convex reads environment variables for local development
+3. **Schema is in your code** - Define tables in `convex/schema.ts`
+4. **Test OAuth flows locally** - The OAuth callback URLs work with your local Convex deployment
+
+When you're ready to deploy, run `npx convex deploy` and add the same OAuth credentials to your Convex dashboard.
+
+## Troubleshooting
+
+### OAuth redirect not working
+
+Make sure your OAuth callback URLs match your deployment:
+
+- **Local:** `https://[your-local-deployment].convex.cloud/api/auth/callback/[provider]`
+- **Production:** `https://[your-prod-deployment].convex.cloud/api/auth/callback/[provider]`
+
+You can find your deployment URL in the Convex dev terminal or dashboard.
+
+### Missing environment variables
+
+If you see errors about missing OAuth credentials:
+
+1. Check that your `.env.local` file includes all required variables
+2. Restart `npx convex dev` after adding environment variables
+3. Verify variable names match exactly (e.g., `AUTH_GITHUB_ID`, not `GITHUB_CLIENT_ID`)
+
+### Auth tables not created
+
+If you see errors about missing tables:
+
+1. Ensure `convex/schema.ts` includes `...authTables`
+2. Save the file to trigger Convex to sync the schema
+3. Check the Convex dev terminal for any schema errors
+
+## Further reading
+
+- [Convex Auth Documentation](https://docs.convex.dev/auth)
+- [OAuth Providers Setup](https://labs.convex.dev/auth/config/oauth)
+- [GitHub OAuth Setup](https://labs.convex.dev/auth/config/oauth/github)
+- [Google OAuth Setup](https://labs.convex.dev/auth/config/oauth/google)

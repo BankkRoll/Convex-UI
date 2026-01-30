@@ -1,0 +1,104 @@
+---
+title: Convex Client
+description: Convex client for Next.js
+---
+
+## Installation
+
+<BlockItem
+  name="convex-client-nextjs"
+  description="Convex Client for Next.js"
+/>
+
+<Callout icon="⚠️" title="Next.js 15 vs 16+ (Proxy)">
+  Starting with **Next.js 16**, Middleware has been renamed to **Proxy**. This block installs `proxy.ts` with the named `proxy` export for Next.js 16+.
+
+If you're using **Next.js 15 or earlier**, rename the file to `middleware.ts` and change the export:
+
+{" "}
+<CodeBlock language="ts">
+  {`// middleware.ts (Next.js 15 and earlier)
+export default convexAuthNextjsMiddleware((request, { convexAuth }) => {
+  // ...
+});`}
+</CodeBlock>
+
+The functionality remains the same—only the naming convention has changed.
+
+</Callout>
+
+## Folder structure
+
+<RegistryBlock itemName="convex-client-nextjs" />
+
+## Usage
+
+This block installs a Convex client for connecting your Next.js project to Convex. It's designed for use with the App Router and fully supports server-side rendering (SSR) with real-time data synchronization.
+
+If you've already set up your Convex client, you can continue using your existing setup.
+
+### Getting started
+
+After installing the block, you'll have the following environment variable in your `.env.local` file:
+
+<CodeBlock language="env">{`NEXT_PUBLIC_CONVEX_URL=`}</CodeBlock>
+
+**For local development:** Simply run `npx convex dev` which will automatically configure this environment variable. No dashboard or account needed to get started!
+
+When you're ready to deploy, you can find your production URL in your [Convex dashboard](https://dashboard.convex.dev) under your project settings.
+
+### Provider setup
+
+The block includes a provider that wraps your app with Convex and authentication support:
+
+<CodeBlock language="tsx">
+{`// src/app/layout.tsx
+import { ConvexAuthNextjsProvider } from "@/lib/convex/provider";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <ConvexAuthNextjsProvider>{children}</ConvexAuthNextjsProvider>
+      </body>
+    </html>
+  );
+}`}
+</CodeBlock>
+
+### Server-side usage
+
+The block also includes server-side helpers for fetching data in Server Components:
+
+<CodeBlock language="tsx">
+{`// src/app/page.tsx
+import { fetchQuery } from "@/lib/convex/server";
+import { api } from "@/convex/_generated/api";
+
+export default async function Page() {
+  const data = await fetchQuery(api.myModule.myQuery);
+  return <div>{/* render data */}</div>;
+}`}
+</CodeBlock>
+
+<Callout type="warning" className="mt-4">
+  This Convex client is built for SSR with the Next.js App Router. If you're
+  building a React SPA, use the [React SPA client](/ui/docs/react/client)
+  instead.
+</Callout>
+
+## Local Development
+
+Convex makes local development simple:
+
+1. Run `npx convex dev` to start your local Convex backend
+2. Your schema is defined in `convex/schema.ts` (create this file if it doesn't exist)
+3. All backend functions live in the `convex/` directory
+4. Changes are automatically synced in real-time
+
+No dashboard needed, no complex configuration. Everything works locally first!
+
+## Further reading
+
+- [Convex Next.js Quickstart](https://docs.convex.dev/quickstart/nextjs)
+- [Server-side Rendering with Convex](https://docs.convex.dev/client/react/nextjs/server-rendering)

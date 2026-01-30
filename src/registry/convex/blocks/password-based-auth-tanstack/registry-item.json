@@ -1,0 +1,103 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "password-based-auth-tanstack",
+  "type": "registry:block",
+  "title": "Password-Based Authentication (TanStack)",
+  "description": "Complete password-based authentication flow for TanStack Start with Convex Auth. Includes login, sign-up, password reset, protected routes, and full Convex backend.",
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "card",
+    "alert",
+    "avatar",
+    "skeleton"
+  ],
+  "dependencies": [
+    "lucide-react",
+    "@convex-dev/auth@latest",
+    "convex@latest",
+    "@tanstack/react-router"
+  ],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/login-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/sign-up-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/forgot-password-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/update-password-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/logout-button.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/login.tsx",
+      "type": "registry:page",
+      "target": "routes/auth/login.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up.tsx",
+      "type": "registry:page",
+      "target": "routes/auth/sign-up.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/forgot-password.tsx",
+      "type": "registry:page",
+      "target": "routes/auth/forgot-password.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/update-password.tsx",
+      "type": "registry:page",
+      "target": "routes/auth/update-password.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up-success.tsx",
+      "type": "registry:page",
+      "target": "routes/auth/sign-up-success.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/_protected/index.tsx",
+      "type": "registry:page",
+      "target": "routes/_protected/index.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/auth.ts",
+      "type": "registry:file",
+      "target": "convex/auth.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/auth.config.ts",
+      "type": "registry:file",
+      "target": "convex/auth.config.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/users.ts",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/http.ts",
+      "type": "registry:file",
+      "target": "convex/http.ts"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "VITE_CONVEX_URL": ""
+  }
+}

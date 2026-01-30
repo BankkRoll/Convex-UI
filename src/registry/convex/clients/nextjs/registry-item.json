@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-nextjs",
+  "type": "registry:lib",
+  "title": "Convex Client for Next.js",
+  "description": "Convex client setup for Next.js with authentication support",
+  "registryDependencies": [],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "envVars": {
+    "NEXT_PUBLIC_CONVEX_URL": ""
+  },
+  "files": [
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/nextjs/proxy.ts",
+      "type": "registry:lib",
+      "target": "src/proxy.ts"
+    }
+  ]
+}
