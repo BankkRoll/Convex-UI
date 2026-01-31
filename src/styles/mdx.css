@@ -1,58 +1,56 @@
-/* mdx.css */
+/* Imports */
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme^="dark"], [data-theme="classic-dark"], [data-theme^="dark"], [data-theme="classic-dark"] *));
+/* Dark mode variant */
+@custom-variant dark (&:where([data-theme$="-dark"], [data-theme$="-dark"] *));
 
-@theme {
+/* Theme Inline */
+@theme inline {
   --container-site: 128rem;
-
+  --radius: var(--radius);
+  --radius-xs: calc(var(--radius) * 0.25);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 3);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
 
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
-
-  --color-sidebar: hsl(var(--sidebar));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
-
+/* Theme Static */
+@theme {
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
@@ -64,6 +62,7 @@
       height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
       height: var(--radix-accordion-content-height);
@@ -74,74 +73,62 @@
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Base Layer */
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-border, currentcolor);
   }
 }
 
-/* CUSTOM UTILITIES FOR TAILWIND */
+/* Custom Utilities */
 @utility text-foreground-muted {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
+
 @utility border-foreground-muted {
-  border-color: hsl(var(--muted-foreground));
+  border-color: var(--muted-foreground);
 }
+
 @utility bg-surface-100 {
-  background-color: hsl(var(--card));
+  background-color: var(--card);
 }
+
 @utility bg-surface-200 {
-  background-color: hsl(var(--popover));
+  background-color: var(--popover);
 }
 
-/* MDX CODE BLOCKS - rehype-pretty-code v0.14+ */
-
-/* Figure wrapper from rehype-pretty-code */
+/* Rehype Pretty Code */
 [data-rehype-pretty-code-figure] {
   @apply relative my-6;
 }
 
-/* Pre element styling */
 [data-rehype-pretty-code-figure] pre {
   @apply overflow-x-auto rounded-lg border border-border bg-card py-4 text-sm max-h-[650px];
 }
 
-/* Code element */
 [data-rehype-pretty-code-figure] code {
   @apply grid min-w-full wrap-break-word rounded-none border-0 bg-transparent p-0 font-mono;
   counter-reset: line;
   box-decoration-break: clone;
 }
 
-/* Line styling */
 [data-rehype-pretty-code-figure] code [data-line] {
   @apply px-4 min-h-6 py-0.5 w-full inline-block leading-relaxed;
 }
 
-/* Dual theme support - Dark */
-[data-theme="dark"] [data-rehype-pretty-code-figure] code span,
-[data-theme="classic-dark"] [data-rehype-pretty-code-figure] code span {
+/* Rehype Theme Support */
+[data-theme$="-dark"] [data-rehype-pretty-code-figure] code span {
   color: var(--shiki-dark) !important;
 }
 
-/* Dual theme support - Light */
-[data-theme="light"] [data-rehype-pretty-code-figure] code span {
+[data-theme$="-light"] [data-rehype-pretty-code-figure] code span {
   color: var(--shiki-light) !important;
 }
 
-/* Default to dark theme when no data-theme set */
 :root:not([data-theme]) [data-rehype-pretty-code-figure] code span {
   color: var(--shiki-dark) !important;
 }
@@ -152,13 +139,13 @@
   }
 }
 
-/* Line numbers */
+/* Rehype Line Numbers */
 [data-rehype-pretty-code-figure] [data-line-numbers] [data-line] {
   @apply px-2;
 }
 
 [data-rehype-pretty-code-figure] [data-line-numbers] > [data-line]::before {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   font-size: 0.75rem;
   counter-increment: line;
   content: counter(line);
@@ -168,18 +155,17 @@
   text-align: right;
 }
 
-/* Highlighted lines */
+/* Rehype Highlighted Lines */
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
   @apply relative bg-muted/50;
-  border-left: 2px solid hsl(var(--muted-foreground));
+  border-left: 2px solid var(--muted-foreground);
 }
 
-/* Highlighted characters/words */
 [data-rehype-pretty-code-figure] [data-highlighted-chars] {
   @apply rounded px-1 py-0.5 bg-muted;
 }
 
-/* Code title/caption */
+/* Rehype Title */
 [data-rehype-pretty-code-title] {
   @apply rounded-t-lg border border-b-0 border-border bg-muted px-4 py-2 text-sm font-medium text-foreground;
 }
@@ -188,8 +174,7 @@
   @apply rounded-t-none mt-0;
 }
 
-/* Plain pre blocks without syntax highlighting (no language specified) */
-/* Exclude pre inside code-block-content (CodeBlock component) */
+/* MDX Plain Pre Blocks */
 .mdx pre:not([data-theme]):not(.shiki) {
   @apply overflow-x-auto rounded-lg border border-border bg-card p-4 text-sm font-mono my-6 text-foreground;
 }
@@ -198,13 +183,12 @@
   @apply bg-transparent p-0;
 }
 
-/* SHIKI CODE BLOCKS (CodeBlock component and tree view) */
+/* Shiki Code Blocks */
 .shiki-wrapper .shiki,
 .code-block-content .shiki {
   @apply h-full;
 }
 
-/* Force transparent background on pre inside code-block-content */
 .code-block-content pre,
 .code-block-content pre.shiki {
   background-color: transparent !important;
@@ -222,30 +206,25 @@
   @apply inline-block w-full min-h-6 leading-relaxed;
 }
 
-/* Shiki dual theme support - Dark */
-[data-theme="dark"] .shiki,
-[data-theme="dark"] .shiki span,
-[data-theme="classic-dark"] .shiki,
-[data-theme="classic-dark"] .shiki span {
+/* Shiki Theme Support */
+[data-theme$="-dark"] .shiki,
+[data-theme$="-dark"] .shiki span {
   color: var(--shiki-dark) !important;
   background-color: transparent !important;
 }
 
-/* Shiki dual theme support - Light */
-[data-theme="light"] .shiki,
-[data-theme="light"] .shiki span {
+[data-theme$="-light"] .shiki,
+[data-theme$="-light"] .shiki span {
   color: var(--shiki-light) !important;
   background-color: transparent !important;
 }
 
-/* Default to dark theme when no data-theme is set */
 :root:not([data-theme]) .shiki,
 :root:not([data-theme]) .shiki span {
   color: var(--shiki-dark) !important;
   background-color: transparent !important;
 }
 
-/* System preference fallback */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) .shiki,
   :root:not([data-theme]) .shiki span {
@@ -253,7 +232,7 @@
   }
 }
 
-/* STEPS */
+/* MDX Steps */
 .mdx > .steps:first-child > h3:first-child {
   @apply mt-0;
 }

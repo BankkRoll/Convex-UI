@@ -14,7 +14,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         <main className="max-w-site mx-auto w-full flex-1 p-0">
           {/* {children} */}
           <div className="border-b">
-            <div className="flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
+            <div className="flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] lg:grid-cols-[280px_minmax(0,1fr)]">
               <Sidebar />
               <div vaul-drawer-wrapper="">
                 <div className="bg-background min-h-screen relative flex flex-col">

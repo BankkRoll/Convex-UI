@@ -8,7 +8,7 @@ import { ThemeSwitcherDropdown } from "./theme-switcher-dropdown";
 
 function SideNavigation() {
   return (
-    <nav className="flex flex-col h-full min-w-[220px]">
+    <nav className="flex flex-col min-h-full min-w-[220px]">
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
           <Link href="/">

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "current-user-avatar-astro",
+  "title": "Current User Avatar (Astro)",
+  "description": "A reactive avatar component for Astro that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "registryDependencies": ["avatar", "skeleton"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-astro/components/current-user-avatar.tsx",
+      "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { cn } from \"@/lib/utils\";\nimport { useCurrentUserImage } from \"../hooks/use-current-user-image\";\nimport { useCurrentUserName } from \"../hooks/use-current-user-name\";\n\ninterface CurrentUserAvatarProps {\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n  showFallback?: boolean;\n}\n\nconst sizeClasses = {\n  sm: \"h-8 w-8 text-xs\",\n  md: \"h-10 w-10 text-sm\",\n  lg: \"h-12 w-12 text-base\",\n};\n\nfunction getInitials(name: string | null): string {\n  if (!name) return \"?\";\n  return name\n    .split(\" \")\n    .map((n) => n[0])\n    .join(\"\")\n    .toUpperCase()\n    .slice(0, 2);\n}\n\nexport function CurrentUserAvatar({\n  size = \"md\",\n  className,\n  showFallback = true,\n}: CurrentUserAvatarProps) {\n  const image = useCurrentUserImage();\n  const name = useCurrentUserName();\n\n  // Loading state\n  if (image === undefined || name === undefined) {\n    return (\n      <Skeleton className={cn(\"rounded-full\", sizeClasses[size], className)} />\n    );\n  }\n\n  // Not authenticated\n  if (!showFallback && !image && !name) {\n    return null;\n  }\n\n  return (\n    <Avatar className={cn(sizeClasses[size], className)}>\n      <AvatarImage src={image ?? undefined} alt={name ?? \"User\"} />\n      <AvatarFallback>{getInitials(name)}</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-astro/hooks/use-current-user-image.ts",
+      "content": "\"use client\";\n\nimport { useQuery } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport function useCurrentUserImage() {\n  const user = useQuery(api.users.current);\n  return user?.image ?? null;\n}\n",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-astro/hooks/use-current-user-name.ts",
+      "content": "\"use client\";\n\nimport { useQuery } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport function useCurrentUserName() {\n  const user = useQuery(api.users.current);\n  return user?.name ?? null;\n}\n",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-astro/convex/schema.ts",
+      "content": "import { defineSchema, defineTable } from \"convex/server\";\nimport { authTables } from \"@convex-dev/auth/server\";\nimport { v } from \"convex/values\";\n\n/**\n * Schema for user avatar functionality.\n *\n * This schema requires authentication - the current-user-avatar component\n * displays the authenticated user's profile image and name.\n *\n * Note: This schema includes authTables which requires @convex-dev/auth.\n * If you're using a different auth system, you can remove authTables\n * and create your own users table.\n */\nexport default defineSchema({\n  // Auth tables from @convex-dev/auth\n  ...authTables,\n\n  // Users table with profile information\n  users: defineTable({\n    // Profile fields\n    name: v.optional(v.string()),\n    email: v.optional(v.string()),\n    image: v.optional(v.string()),\n\n    // Auth metadata\n    emailVerificationTime: v.optional(v.number()),\n    isAnonymous: v.optional(v.boolean()),\n  })\n    .index(\"by_email\", [\"email\"])\n    .index(\"by_anonymous\", [\"isAnonymous\"]),\n});\n",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/current-user-avatar-astro/convex/users.ts",
+      "content": "import { query } from \"./_generated/server\";\nimport type { QueryCtx } from \"./_generated/server\";\nimport { v } from \"convex/values\";\nimport type { Id } from \"./_generated/dataModel\";\nimport { getAuthUserId } from \"@convex-dev/auth/server\";\n\n/**\n * User validator for return types.\n */\nconst userValidator = v.object({\n  _id: v.id(\"users\"),\n  _creationTime: v.number(),\n  name: v.optional(v.string()),\n  email: v.optional(v.string()),\n  image: v.optional(v.string()),\n  emailVerificationTime: v.optional(v.number()),\n  isAnonymous: v.optional(v.boolean()),\n});\n\n/**\n * Get the current authenticated user's profile.\n *\n * This query is reactive - it automatically updates when user data changes.\n * Returns null if not authenticated.\n *\n * Security: Only returns data for the authenticated user themselves.\n * The user's own email is included since they are viewing their own profile.\n */\nexport const current = query({\n  args: {},\n  returns: v.union(userValidator, v.null()),\n  handler: async (ctx: QueryCtx) => {\n    const userId = await getAuthUserId(ctx);\n    if (!userId) {\n      return null;\n    }\n    return await ctx.db.get(userId);\n  },\n});\n\n/**\n * Public profile validator - excludes sensitive fields like email.\n */\nconst publicProfileValidator = v.object({\n  _id: v.id(\"users\"),\n  name: v.optional(v.string()),\n  image: v.optional(v.string()),\n});\n\n/**\n * Get a user's public profile by ID.\n * Only returns safe, public fields (name, image).\n *\n * Security: Never exposes email or other sensitive data.\n */\nexport const get = query({\n  args: { userId: v.id(\"users\") },\n  returns: v.union(publicProfileValidator, v.null()),\n  handler: async (ctx: QueryCtx, args: { userId: Id<\"users\"> }) => {\n    const user = await ctx.db.get(args.userId);\n    if (!user) {\n      return null;\n    }\n    // Only return public fields\n    return {\n      _id: user._id,\n      name: user.name,\n      image: user.image,\n    };\n  },\n});\n",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    },
+    {
+      "path": "src/registry/convex/clients/astro/lib/convex/client.ts",
+      "content": "import { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = (import.meta as any).env.PUBLIC_CONVEX_URL as string;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/astro/lib/convex/provider.tsx",
+      "content": "import { ConvexAuthProvider } from \"@convex-dev/auth/react\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(\n  (import.meta as any).env.PUBLIC_CONVEX_URL as string,\n);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return <ConvexAuthProvider client={convex}>{children}</ConvexAuthProvider>;\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "PUBLIC_CONVEX_URL": ""
+  },
+  "docs": "You'll need to set the following environment variable in your project: `PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "type": "registry:component"
+}

@@ -1,10 +1,5 @@
-/* code-block-variables.css */
-
-/* DARK / DEEP DARK THEMES */
-[data-theme="dark"],
-[data-theme="deep-dark"],
-.dark,
-.deep-dark {
+/* DARK THEMES - matches any theme ending in -dark */
+[data-theme$="-dark"] {
   --code-token-keyword: #bda4ff;
   --code-foreground: #ffffff;
   --code-token-constant: #3ecf8e;
@@ -18,28 +13,21 @@
   --code-token-number: #ffffff;
   --code-token-property: #3ecf8e;
   --code-highlight-color: #232323;
-  --muted-foreground: #7e7e7e;
-  --popover: #1a1a1a;
-  --card: #121212;
 }
 
-/* LIGHT THEME */
-[data-theme="light"],
-.light {
+/* LIGHT THEMES - matches any theme ending in -light */
+[data-theme$="-light"] {
   --code-token-keyword: #6b35dc;
-  --code-foreground: hsl(var(--foreground-light) / 1);
+  --code-foreground: #1a1a1a;
   --code-token-constant: #15593b;
   --code-token-string: #f1a10d;
   --code-token-comment: #7e7e7e;
-  --code-token-parameter: hsl(var(--foreground-light) / 1);
+  --code-token-parameter: #1a1a1a;
   --code-token-function: #15593b;
   --code-token-string-expression: #f1a10d;
-  --code-token-punctuation: hsl(var(--foreground-light) / 1);
-  --code-token-link: hsl(var(--foreground-light) / 1);
-  --code-token-number: hsl(var(--foreground-light) / 1);
+  --code-token-punctuation: #1a1a1a;
+  --code-token-link: #1a1a1a;
+  --code-token-number: #1a1a1a;
   --code-token-property: #15593b;
-  --code-highlight-color: #1c1c1c;
-  --muted-foreground: #7e7e7e;
-  --popover: #f8f8f8;
-  --card: #ffffff;
+  --code-highlight-color: #f0f0f0;
 }

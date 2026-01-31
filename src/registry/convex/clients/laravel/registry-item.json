@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-laravel",
+  "type": "registry:lib",
+  "title": "Convex Client for Laravel",
+  "description": "Convex client setup for Laravel with Inertia.js + React and authentication support",
+  "registryDependencies": [],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL. Add the variable to your `.env` file.",
+  "envVars": {
+    "VITE_CONVEX_URL": ""
+  },
+  "files": [
+    {
+      "path": "src/registry/convex/clients/laravel/lib/convex/client.ts",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/laravel/lib/convex/provider.tsx",
+      "type": "registry:lib"
+    }
+  ]
+}

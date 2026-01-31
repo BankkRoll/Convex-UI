@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "convex-client-laravel",
+  "title": "Convex Client for Laravel",
+  "description": "Convex client setup for Laravel with Inertia.js + React and authentication support",
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/convex/clients/laravel/lib/convex/client.ts",
+      "content": "import { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = (import.meta as any).env.VITE_CONVEX_URL as string;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "src/registry/convex/clients/laravel/lib/convex/provider.tsx",
+      "content": "import { ConvexAuthProvider } from \"@convex-dev/auth/react\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(\n  (import.meta as any).env.VITE_CONVEX_URL as string,\n);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return <ConvexAuthProvider client={convex}>{children}</ConvexAuthProvider>;\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "envVars": {
+    "VITE_CONVEX_URL": ""
+  },
+  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL. Add the variable to your `.env` file.",
+  "type": "registry:lib"
+}

@@ -8,6 +8,7 @@ import { Provider as JotaiProvider } from "jotai";
 import { MobileMenuProvider } from "@/context/mobile-menu-context";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { allThemeValues } from "@/lib/themes-config";
 
 // Singleton client instance - created lazily on first client-side render
 let convexClient: ConvexReactClient | null = null;
@@ -51,8 +52,8 @@ export function ThemeProvider({ children, ...props }: any) {
     <JotaiProvider>
       <NextThemesProvider
         attribute="data-theme"
-        defaultTheme="system"
-        enableSystem
+        themes={allThemeValues}
+        defaultTheme="modern-minimal-dark"
         disableTransitionOnChange
         {...props}
       >

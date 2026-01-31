@@ -3,8 +3,10 @@ type supportedFrameworks =
   | "react-router"
   | "tanstack"
   | "react"
-  | "vue"
-  | "nuxtjs";
+  | "vite"
+  | "laravel"
+  | "astro";
+
 export interface NavItem {
   title: string;
   href?: string;

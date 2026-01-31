@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "realtime-cursor-vite",
+  "type": "registry:component",
+  "title": "Realtime Cursors (Vite)",
+  "description": "Display realtime cursor positions of other users in a room for Vite. Perfect for collaborative applications. Includes full Convex backend with presence tracking.",
+  "registryDependencies": [],
+  "dependencies": ["framer-motion", "convex@latest"],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/realtime-cursor-vite/components/cursor.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/realtime-cursor-vite/components/realtime-cursors.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/realtime-cursor-vite/hooks/use-realtime-cursors.ts",
+      "type": "registry:hook"
+    },
+    {
+      "path": "src/registry/convex/blocks/realtime-cursor-vite/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/realtime-cursor-vite/convex/presence.ts",
+      "type": "registry:file",
+      "target": "convex/presence.ts"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "VITE_CONVEX_URL": ""
+  }
+}

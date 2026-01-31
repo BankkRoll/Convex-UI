@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-auth-astro",
+  "type": "registry:block",
+  "title": "Social Authentication (Astro)",
+  "description": "Social authentication (OAuth) components for Astro with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
+  "registryDependencies": ["button", "card", "alert"],
+  "dependencies": [
+    "lucide-react",
+    "@convex-dev/auth@latest",
+    "convex@latest",
+    "@auth/core"
+  ],
+  "files": [
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/components/login-form.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/convex/schema.ts",
+      "type": "registry:file",
+      "target": "convex/schema.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/convex/auth.ts",
+      "type": "registry:file",
+      "target": "convex/auth.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/convex/auth.config.ts",
+      "type": "registry:file",
+      "target": "convex/auth.config.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/convex/users.ts",
+      "type": "registry:file",
+      "target": "convex/users.ts"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-astro/convex/http.ts",
+      "type": "registry:file",
+      "target": "convex/http.ts"
+    }
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "PUBLIC_CONVEX_URL": "",
+    "AUTH_GITHUB_ID": "",
+    "AUTH_GITHUB_SECRET": "",
+    "AUTH_GOOGLE_ID": "",
+    "AUTH_GOOGLE_SECRET": ""
+  }
+}

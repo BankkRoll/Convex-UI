@@ -5,37 +5,54 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
 } from "./ui/dropdown-menu";
-import { Moon, Sun, Monitor, Sparkles, Check } from "lucide-react";
+import { Moon, Sun, Check, Palette } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { themes, sortedThemes } from "@/lib/themes-config";
+import { ScrollArea } from "./ui/scroll-area";
 
-type ThemeOption = {
-  value: string;
-  icon: React.ReactNode;
-  label: string;
-};
+// Helper to get current color theme and mode from theme string like "catppuccin-dark"
+function parseTheme(theme: string | undefined): {
+  colorTheme: string;
+  mode: "light" | "dark";
+} {
+  if (!theme) return { colorTheme: "modern-minimal", mode: "dark" };
 
-const themes: ThemeOption[] = [
-  { value: "light", icon: <Sun className="h-4 w-4" />, label: "Light" },
-  { value: "dark", icon: <Moon className="h-4 w-4" />, label: "Dark" },
-  {
-    value: "classic-dark",
-    icon: <Sparkles className="h-4 w-4" />,
-    label: "Classic",
-  },
-  { value: "system", icon: <Monitor className="h-4 w-4" />, label: "System" },
-];
+  if (theme.endsWith("-dark")) {
+    return { colorTheme: theme.replace("-dark", ""), mode: "dark" };
+  }
+  if (theme.endsWith("-light")) {
+    return { colorTheme: theme.replace("-light", ""), mode: "light" };
+  }
+  return { colorTheme: "modern-minimal", mode: "dark" };
+}
 
 const ThemeSwitcherDropdown = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const { colorTheme, mode } = parseTheme(theme);
+
+  const setColorTheme = (name: string) => {
+    setTheme(`${name}-${mode}`);
+  };
+
+  const setMode = (newMode: "light" | "dark") => {
+    setTheme(`${colorTheme}-${newMode}`);
+  };
 
   if (!mounted) {
     return (
@@ -45,7 +62,9 @@ const ThemeSwitcherDropdown = () => {
     );
   }
 
-  const isDark = resolvedTheme === "dark" || resolvedTheme === "classic-dark";
+  const currentThemeConfig =
+    themes.find((t) => t.name === colorTheme) || themes[0];
+  const isDark = mode === "dark";
 
   return (
     <DropdownMenu>
@@ -55,21 +74,93 @@ const ThemeSwitcherDropdown = () => {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-36">
-        {themes.map((t) => (
-          <DropdownMenuItem
-            key={t.value}
-            onClick={() => setTheme(t.value)}
-            className={cn(
-              "flex items-center gap-2 cursor-pointer",
-              theme === t.value && "bg-accent",
-            )}
-          >
-            {t.icon}
-            <span className="flex-1">{t.label}</span>
-            {theme === t.value && <Check className="h-4 w-4 text-primary" />}
-          </DropdownMenuItem>
-        ))}
+      <DropdownMenuContent align="end" className="w-48">
+        <DropdownMenuLabel className="flex items-center gap-2">
+          <div
+            className="h-3 w-3 rounded-full"
+            style={{
+              backgroundColor: isDark
+                ? currentThemeConfig.primaryDark
+                : currentThemeConfig.primaryLight,
+            }}
+          />
+          {currentThemeConfig.title}
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+
+        {/* Mode Toggle */}
+        <DropdownMenuItem
+          onClick={() => setMode("light")}
+          className={cn("flex items-center gap-2 cursor-pointer")}
+        >
+          <Sun className="h-4 w-4" />
+          <span className="flex-1">Light</span>
+          {mode === "light" && <Check className="h-4 w-4 text-primary" />}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => setMode("dark")}
+          className={cn("flex items-center gap-2 cursor-pointer")}
+        >
+          <Moon className="h-4 w-4" />
+          <span className="flex-1">Dark</span>
+          {mode === "dark" && <Check className="h-4 w-4 text-primary" />}
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator />
+
+        {/* Color Theme Submenu */}
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="flex items-center gap-2">
+            <Palette className="h-4 w-4" />
+            <span>Color Theme</span>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent className="w-52">
+              <ScrollArea className="h-80">
+                <div className="p-1">
+                  {sortedThemes.map((t) => (
+                    <DropdownMenuItem
+                      key={t.name}
+                      onClick={() => setColorTheme(t.name)}
+                      className="flex items-center gap-3 cursor-pointer"
+                    >
+                      <div
+                        className="h-4 w-4 rounded-full border border-border shrink-0"
+                        style={{
+                          backgroundColor: isDark
+                            ? t.primaryDark
+                            : t.primaryLight,
+                        }}
+                      />
+                      <span
+                        className="flex-1"
+                        style={{ fontFamily: t.fontSans }}
+                      >
+                        {t.title}
+                      </span>
+                      {colorTheme === t.name && (
+                        <Check className="h-4 w-4 text-primary" />
+                      )}
+                    </DropdownMenuItem>
+                  ))}
+                </div>
+              </ScrollArea>
+              <DropdownMenuSeparator />
+              <div className="px-2 py-1.5 text-xs text-muted-foreground text-center">
+                Themes by{" "}
+                <a
+                  href="https://tweakcn.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  tweakcn
+                </a>
+              </div>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
       </DropdownMenuContent>
     </DropdownMenu>
   );
