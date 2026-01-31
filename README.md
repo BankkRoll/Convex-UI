@@ -1,6 +1,6 @@
 # Convex UI Registry
 
-<img width="2152" height="1264" alt="Convex UI Registry" src="https://github.com/user-attachments/assets/0252109c-e30f-40a0-bfac-c302ff888f33" />
+<img width="2363" height="1264" alt="image" src="https://github.com/user-attachments/assets/c01a85f7-b597-4575-a3c2-de92aeff6b1e" />
 
 A collection of beautifully designed, accessible, and fully-featured UI components for building applications with [Convex](https://convex.dev). Built on top of [shadcn/ui](https://ui.shadcn.com) design patterns.
 
@@ -8,7 +8,7 @@ A collection of beautifully designed, accessible, and fully-featured UI componen
 
 ## Attribution
 
-**This project is based on [Supabase UI Library](https://github.com/supabase/supabase/tree/master/apps/ui-library) (OSS). Modifications have been made to replace Supabase backend integrations with Convex.**
+**This project is based on [Supabase UI Library](https://github.com/supabase/supabase/tree/master/apps/ui-library) (OSS). Modifications have been made to replace Supabase backend integrations with [Convex](https://convex.dev).**
 
 The original work is licensed under the Apache License 2.0. See [LICENSE](./LICENSE) for details.
 
