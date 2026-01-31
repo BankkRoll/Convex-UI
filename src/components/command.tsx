@@ -21,22 +21,25 @@ const packageManagers: PackageManager[] = ["pnpm", "npm", "yarn", "bun"];
 const LOCAL_STORAGE_KEY = "package-manager-copy-command";
 
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "production") {
-    // we have a special alias for the production environment, added in https://github.com/shadcn-ui/ui/pull/8161
-    return `@supabase`;
-  } else if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "preview") {
+  // TODO: Uncomment when namespace is registered
+  // if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "production") {
+  //   return `@convex-ui`;
+  // }
+  if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "preview") {
     return `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`;
+  } else if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "production") {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`;
   } else {
     return "http://localhost:3004";
   }
 };
 
 const getComponentPath = (name: string) => {
-  if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "production") {
-    return `/${name}`;
-  } else {
-    return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/r/${name}.json`;
-  }
+  // TODO: Uncomment when namespace is registered
+  // if (process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV === "production") {
+  //   return `/${name}`;
+  // }
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/r/${name}.json`;
 };
 
 export function Command({
