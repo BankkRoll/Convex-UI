@@ -1,10 +1,11 @@
 "use client";
 
-import { Button, type ButtonProps } from "@/components/ui/button";
+import * as React from "react";
+import { Button } from "@/components/ui/button";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { LogOut } from "lucide-react";
 
-interface LogoutButtonProps extends ButtonProps {
+interface LogoutButtonProps extends React.ComponentProps<typeof Button> {
   showIcon?: boolean;
 }
 

@@ -18,7 +18,7 @@
     },
     {
       "path": "src/registry/convex/blocks/social-auth-nextjs/components/logout-button.tsx",
-      "content": "\"use client\";\n\nimport { Button, type ButtonProps } from \"@/components/ui/button\";\nimport { useAuthActions } from \"@convex-dev/auth/react\";\nimport { LogOut } from \"lucide-react\";\n\ninterface LogoutButtonProps extends ButtonProps {\n  showIcon?: boolean;\n}\n\nexport function LogoutButton({\n  showIcon = true,\n  children,\n  ...props\n}: LogoutButtonProps) {\n  const { signOut } = useAuthActions();\n\n  return (\n    <Button onClick={() => signOut()} {...props}>\n      {showIcon && <LogOut className=\"mr-2 h-4 w-4\" />}\n      {children ?? \"Sign out\"}\n    </Button>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { useAuthActions } from \"@convex-dev/auth/react\";\nimport { LogOut } from \"lucide-react\";\n\ninterface LogoutButtonProps extends React.ComponentProps<typeof Button> {\n  showIcon?: boolean;\n}\n\nexport function LogoutButton({\n  showIcon = true,\n  children,\n  ...props\n}: LogoutButtonProps) {\n  const { signOut } = useAuthActions();\n\n  return (\n    <Button onClick={() => signOut()} {...props}>\n      {showIcon && <LogOut className=\"mr-2 h-4 w-4\" />}\n      {children ?? \"Sign out\"}\n    </Button>\n  );\n}\n",
       "type": "registry:component"
     },
     {
