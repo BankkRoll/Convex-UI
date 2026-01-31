@@ -30,15 +30,7 @@ export const componentPages: SidebarNavGroup = {
   items: [
     {
       title: "Client",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/client",
       items: [],
       new: false,
@@ -46,15 +38,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Password-Based Auth",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/password-based-auth",
       items: [],
       new: false,
@@ -62,15 +46,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Social Auth",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/social-auth",
       items: [],
       new: false,
@@ -78,15 +54,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Dropzone",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/dropzone",
       items: [],
       new: false,
@@ -94,15 +62,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Realtime Cursor",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/realtime-cursor",
       items: [],
       new: false,
@@ -110,15 +70,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Current User Avatar",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/current-user-avatar",
       items: [],
       new: false,
@@ -126,15 +78,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Realtime Avatar Stack",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/realtime-avatar-stack",
       items: [],
       new: false,
@@ -142,15 +86,7 @@ export const componentPages: SidebarNavGroup = {
     },
     {
       title: "Realtime Chat",
-      supportedFrameworks: [
-        "nextjs",
-        "react-router",
-        "tanstack",
-        "react",
-        "vite",
-        "laravel",
-        "astro",
-      ],
+      supportedFrameworks: ["nextjs", "tanstack", "react"],
       href: "/docs/nextjs/realtime-chat",
       items: [],
       new: false,
@@ -173,10 +109,6 @@ export const COMMAND_ITEMS = [
 // Framework titles for display
 export const frameworkTitles: Record<string, string> = {
   nextjs: "Next.js",
-  "react-router": "React Router",
   tanstack: "TanStack Start",
-  react: "React SPA",
-  vite: "Vite",
-  laravel: "Laravel",
-  astro: "Astro",
+  react: "React",
 };

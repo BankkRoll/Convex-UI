@@ -1,11 +1,4 @@
-type supportedFrameworks =
-  | "nextjs"
-  | "react-router"
-  | "tanstack"
-  | "react"
-  | "vite"
-  | "laravel"
-  | "astro";
+type supportedFrameworks = "nextjs" | "tanstack" | "react";
 
 export interface NavItem {
   title: string;
