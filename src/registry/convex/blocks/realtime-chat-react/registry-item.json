@@ -33,5 +33,10 @@
       "type": "registry:file",
       "target": "convex/messages.ts"
     }
-  ]
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "VITE_CONVEX_URL": ""
+  },
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`."
 }

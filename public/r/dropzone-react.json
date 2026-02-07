@@ -9,7 +9,9 @@
     "convex@latest",
     "@convex-dev/auth@latest"
   ],
-  "registryDependencies": ["button"],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "src/registry/convex/blocks/dropzone-react/components/dropzone.tsx",
@@ -45,8 +47,9 @@
     }
   ],
   "envVars": {
+    "CONVEX_DEPLOYMENT": "",
     "VITE_CONVEX_URL": ""
   },
-  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
   "type": "registry:component"
 }

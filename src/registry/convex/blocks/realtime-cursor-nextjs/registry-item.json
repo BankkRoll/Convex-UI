@@ -29,5 +29,10 @@
       "type": "registry:file",
       "target": "convex/presence.ts"
     }
-  ]
+  ],
+  "envVars": {
+    "CONVEX_DEPLOYMENT": "",
+    "NEXT_PUBLIC_CONVEX_URL": ""
+  },
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`."
 }

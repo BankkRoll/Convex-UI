@@ -6,10 +6,11 @@
   "description": "Convex client setup for React (Vite) with authentication support",
   "registryDependencies": [],
   "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
-  "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
   "envVars": {
+    "CONVEX_DEPLOYMENT": "",
     "VITE_CONVEX_URL": ""
   },
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
   "files": [
     {
       "path": "src/registry/convex/clients/react/lib/convex/client.ts",

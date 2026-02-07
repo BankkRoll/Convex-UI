@@ -16,10 +16,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthActions } from "@convex-dev/auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+/**
+ * ForgotPasswordForm component for requesting password reset.
+ *
+ * Per Convex Auth docs, submits with flow: "reset" which triggers
+ * the ResendOTPPasswordReset provider to send an OTP code via email.
+ *
+ * After successful submission, redirects to the update password page
+ * with the email pre-filled.
+ */
 export function ForgotPasswordForm() {
   const { signIn } = useAuthActions();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -39,7 +50,7 @@ export function ForgotPasswordForm() {
       setSuccess(true);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to send reset email",
+        err instanceof Error ? err.message : "Failed to send reset code",
       );
     } finally {
       setLoading(false);
@@ -55,10 +66,23 @@ export function ForgotPasswordForm() {
           </div>
           <CardTitle className="text-center">Check your email</CardTitle>
           <CardDescription className="text-center">
-            We've sent a password reset link to {email}
+            We've sent a password reset code to {email}
           </CardDescription>
         </CardHeader>
-        <CardFooter>
+        <CardContent className="text-center text-sm text-muted-foreground">
+          Enter the 8-digit code from your email to reset your password.
+        </CardContent>
+        <CardFooter className="flex flex-col gap-4">
+          <Button
+            onClick={() =>
+              router.push(
+                `/auth/update-password?email=${encodeURIComponent(email)}`,
+              )
+            }
+            className="w-full"
+          >
+            Enter reset code
+          </Button>
           <Link href="/auth/login" className="w-full">
             <Button variant="outline" className="w-full">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -75,7 +99,7 @@ export function ForgotPasswordForm() {
       <CardHeader>
         <CardTitle>Reset your password</CardTitle>
         <CardDescription>
-          Enter your email and we'll send you a link to reset your password
+          Enter your email and we'll send you a code to reset your password
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
@@ -101,7 +125,7 @@ export function ForgotPasswordForm() {
         <CardFooter className="flex flex-col gap-4">
           <Button type="submit" className="w-full" disabled={loading}>
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Send reset link
+            Send reset code
           </Button>
           <Link href="/auth/login" className="w-full">
             <Button variant="ghost" className="w-full">

@@ -4,8 +4,24 @@ import { Anonymous } from "@convex-dev/auth/providers/Anonymous";
 import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
 
-export const { auth, signIn, signOut, store } = convexAuth({
-  providers: [Password, GitHub, Google, Anonymous],
+// Build providers list dynamically based on available env vars
+const providers: Parameters<typeof convexAuth>[0]["providers"] = [
+  Password,
+  Anonymous,
+];
+
+// Only add GitHub if credentials are configured
+if (process.env.AUTH_GITHUB_ID && process.env.AUTH_GITHUB_SECRET) {
+  providers.push(GitHub);
+}
+
+// Only add Google if credentials are configured
+if (process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET) {
+  providers.push(Google);
+}
+
+export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
+  providers,
   callbacks: {
     async createOrUpdateUser(ctx, args) {
       // Check if this is an anonymous provider

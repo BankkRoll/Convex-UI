@@ -3,8 +3,15 @@
   "name": "realtime-chat-nextjs",
   "title": "Realtime Chat (Next.js)",
   "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-  "dependencies": ["lucide-react", "convex@latest", "@convex-dev/auth@latest"],
-  "registryDependencies": ["input", "button"],
+  "dependencies": [
+    "lucide-react",
+    "convex@latest",
+    "@convex-dev/auth@latest"
+  ],
+  "registryDependencies": [
+    "input",
+    "button"
+  ],
   "files": [
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/chat-message.tsx",
@@ -50,7 +57,7 @@
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-      "content": "import {\n  fetchQuery,\n  fetchMutation,\n  fetchAction,\n  preloadQuery,\n} from \"convex/nextjs\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
+      "content": "import {\n  fetchAction,\n  fetchMutation,\n  fetchQuery,\n  preloadQuery,\n} from \"convex/nextjs\";\n\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
       "type": "registry:lib"
     },
     {
@@ -61,8 +68,9 @@
     }
   ],
   "envVars": {
+    "CONVEX_DEPLOYMENT": "",
     "NEXT_PUBLIC_CONVEX_URL": ""
   },
-  "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
   "type": "registry:component"
 }

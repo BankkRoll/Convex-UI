@@ -3,7 +3,10 @@
   "name": "convex-client-nextjs",
   "title": "Convex Client for Next.js",
   "description": "Convex client setup for Next.js with authentication support",
-  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "dependencies": [
+    "convex@latest",
+    "@convex-dev/auth@latest"
+  ],
   "registryDependencies": [],
   "files": [
     {
@@ -18,7 +21,7 @@
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-      "content": "import {\n  fetchQuery,\n  fetchMutation,\n  fetchAction,\n  preloadQuery,\n} from \"convex/nextjs\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
+      "content": "import {\n  fetchAction,\n  fetchMutation,\n  fetchQuery,\n  preloadQuery,\n} from \"convex/nextjs\";\n\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
       "type": "registry:lib"
     },
     {
@@ -29,8 +32,9 @@
     }
   ],
   "envVars": {
+    "CONVEX_DEPLOYMENT": "",
     "NEXT_PUBLIC_CONVEX_URL": ""
   },
-  "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
   "type": "registry:lib"
 }

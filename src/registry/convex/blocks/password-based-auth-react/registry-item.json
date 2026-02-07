@@ -5,7 +5,12 @@
   "title": "Password-Based Authentication (React)",
   "description": "Password-based authentication components for React with Convex Auth. Includes login, sign-up forms, and full Convex backend.",
   "registryDependencies": ["button", "input", "label", "card", "alert"],
-  "dependencies": ["lucide-react", "@convex-dev/auth@latest", "convex@latest"],
+  "dependencies": [
+    "lucide-react",
+    "@convex-dev/auth@latest",
+    "convex@latest",
+    "@auth/core"
+  ],
   "files": [
     {
       "path": "src/registry/convex/blocks/password-based-auth-react/components/login-form.tsx",
@@ -43,6 +48,13 @@
   ],
   "envVars": {
     "CONVEX_DEPLOYMENT": "",
-    "VITE_CONVEX_URL": ""
-  }
+    "VITE_CONVEX_URL": "",
+    "AUTH_RESEND_KEY": "",
+    "AUTH_EMAIL_FROM": "",
+    "AUTH_GITHUB_ID": "",
+    "AUTH_GITHUB_SECRET": "",
+    "AUTH_GOOGLE_ID": "",
+    "AUTH_GOOGLE_SECRET": ""
+  },
+  "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`"
 }

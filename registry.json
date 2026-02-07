@@ -21,7 +21,8 @@
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
-        "convex@latest"
+        "convex@latest",
+        "@auth/core"
       ],
       "files": [
         {
@@ -119,9 +120,15 @@
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
-        "NEXT_PUBLIC_CONVEX_URL": ""
+        "NEXT_PUBLIC_CONVEX_URL": "",
+        "AUTH_RESEND_KEY": "",
+        "AUTH_EMAIL_FROM": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -129,11 +136,18 @@
       "type": "registry:block",
       "title": "Password-Based Authentication (React)",
       "description": "Password-based authentication components for React with Convex Auth. Includes login, sign-up forms, and full Convex backend.",
-      "registryDependencies": ["button", "input", "label", "card", "alert"],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "card",
+        "alert"
+      ],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
-        "convex@latest"
+        "convex@latest",
+        "@auth/core"
       ],
       "files": [
         {
@@ -180,9 +194,15 @@
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
-        "VITE_CONVEX_URL": ""
+        "VITE_CONVEX_URL": "",
+        "AUTH_RESEND_KEY": "",
+        "AUTH_EMAIL_FROM": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -204,6 +224,7 @@
         "@convex-dev/auth@latest",
         "convex@latest",
         "@tanstack/react-router",
+        "@auth/core",
         "@convex-dev/react-query@latest",
         "@tanstack/react-query@latest"
       ],
@@ -298,9 +319,15 @@
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
-        "VITE_CONVEX_URL": ""
+        "VITE_CONVEX_URL": "",
+        "AUTH_RESEND_KEY": "",
+        "AUTH_EMAIL_FROM": "",
+        "AUTH_GITHUB_ID": "",
+        "AUTH_GITHUB_SECRET": "",
+        "AUTH_GOOGLE_ID": "",
+        "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -308,7 +335,13 @@
       "type": "registry:block",
       "title": "Social Authentication (Next.js)",
       "description": "Social authentication (OAuth) for Next.js with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "alert",
+        "avatar",
+        "skeleton"
+      ],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -385,7 +418,7 @@
         "AUTH_GOOGLE_ID": "",
         "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials\n\n3. Configure OAuth callback URLs in each provider's dashboard:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\nAt least one OAuth provider must be configured for authentication to work.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -393,7 +426,11 @@
       "type": "registry:block",
       "title": "Social Authentication (React)",
       "description": "Social authentication (OAuth) components for React with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": ["button", "card", "alert"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "alert"
+      ],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -447,7 +484,7 @@
         "AUTH_GOOGLE_ID": "",
         "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials\n\n3. Configure OAuth callback URLs in each provider's dashboard:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\nAt least one OAuth provider must be configured for authentication to work.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -455,7 +492,13 @@
       "type": "registry:block",
       "title": "Social Authentication (TanStack)",
       "description": "Social authentication (OAuth) for TanStack Start with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
+      "registryDependencies": [
+        "button",
+        "card",
+        "alert",
+        "avatar",
+        "skeleton"
+      ],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -530,7 +573,7 @@
         "AUTH_GOOGLE_ID": "",
         "AUTH_GOOGLE_SECRET": ""
       },
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials\n\n3. Configure OAuth callback URLs in each provider's dashboard:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\nAt least one OAuth provider must be configured for authentication to work.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -538,7 +581,10 @@
       "type": "registry:component",
       "title": "Realtime Chat (Next.js)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": ["input", "button"],
+      "registryDependencies": [
+        "input",
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "convex@latest",
@@ -589,10 +635,11 @@
           "target": "src/proxy.ts"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -600,7 +647,10 @@
       "type": "registry:component",
       "title": "Realtime Chat (React)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": ["input", "button"],
+      "registryDependencies": [
+        "input",
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "convex@latest",
@@ -642,10 +692,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -653,7 +704,10 @@
       "type": "registry:component",
       "title": "Realtime Chat (TanStack Start)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": ["input", "button"],
+      "registryDependencies": [
+        "input",
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "convex@latest",
@@ -701,10 +755,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -759,10 +814,11 @@
           "target": "src/proxy.ts"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -808,10 +864,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -863,10 +920,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -874,8 +932,14 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (Next.js)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": ["avatar", "tooltip"],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "registryDependencies": [
+        "avatar",
+        "tooltip"
+      ],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/avatar-stack.tsx",
@@ -917,10 +981,11 @@
           "target": "src/proxy.ts"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -928,8 +993,14 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (React)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": ["avatar", "tooltip"],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "registryDependencies": [
+        "avatar",
+        "tooltip"
+      ],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-react/components/avatar-stack.tsx",
@@ -962,10 +1033,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -973,7 +1045,10 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (TanStack Start)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": ["avatar", "tooltip"],
+      "registryDependencies": [
+        "avatar",
+        "tooltip"
+      ],
       "dependencies": [
         "convex@latest",
         "@convex-dev/auth@latest",
@@ -1016,10 +1091,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1027,7 +1103,9 @@
       "type": "registry:component",
       "title": "Dropzone (Next.js)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
@@ -1071,10 +1149,11 @@
           "target": "src/proxy.ts"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1082,7 +1161,9 @@
       "type": "registry:component",
       "title": "Dropzone (React)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
@@ -1117,10 +1198,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1128,7 +1210,9 @@
       "type": "registry:component",
       "title": "Dropzone (TanStack Start)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "button"
+      ],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
@@ -1169,10 +1253,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1180,8 +1265,14 @@
       "type": "registry:component",
       "title": "Current User Avatar (Next.js)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": ["avatar", "skeleton"],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "registryDependencies": [
+        "avatar",
+        "skeleton"
+      ],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "files": [
         {
           "path": "src/registry/convex/blocks/current-user-avatar-nextjs/components/current-user-avatar.tsx",
@@ -1223,10 +1314,11 @@
           "target": "src/proxy.ts"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. This component requires Convex Auth to be configured. Make sure you have authentication set up in your project.\n\n4. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1234,8 +1326,14 @@
       "type": "registry:component",
       "title": "Current User Avatar (React)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": ["avatar", "skeleton"],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+      "registryDependencies": [
+        "avatar",
+        "skeleton"
+      ],
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "files": [
         {
           "path": "src/registry/convex/blocks/current-user-avatar-react/components/current-user-avatar.tsx",
@@ -1268,10 +1366,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. This component requires Convex Auth to be configured. Make sure you have authentication set up in your project.\n\n4. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1279,7 +1378,10 @@
       "type": "registry:component",
       "title": "Current User Avatar (TanStack Start)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": ["avatar", "skeleton"],
+      "registryDependencies": [
+        "avatar",
+        "skeleton"
+      ],
       "dependencies": [
         "convex@latest",
         "@convex-dev/auth@latest",
@@ -1322,10 +1424,11 @@
           "type": "registry:lib"
         }
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
-      }
+      },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. This component requires Convex Auth to be configured. Make sure you have authentication set up in your project.\n\n4. The Convex schema and functions will be automatically deployed when you run `npx convex dev`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -1334,11 +1437,15 @@
       "title": "Convex Client for Next.js",
       "description": "Convex client setup for Next.js with authentication support",
       "registryDependencies": [],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
-      "docs": "You'll need to set the following environment variable in your project: `NEXT_PUBLIC_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": ""
       },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
       "files": [
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
@@ -1366,11 +1473,15 @@
       "title": "Convex Client for React",
       "description": "Convex client setup for React (Vite) with authentication support",
       "registryDependencies": [],
-      "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
+      "dependencies": [
+        "convex@latest",
+        "@convex-dev/auth@latest"
+      ],
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
       },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
       "files": [
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
@@ -1395,10 +1506,11 @@
         "@convex-dev/react-query@latest",
         "@tanstack/react-query@latest"
       ],
-      "docs": "You'll need to set the following environment variable in your project: `VITE_CONVEX_URL`. Run `npx convex dev` to get your Convex deployment URL.",
       "envVars": {
+        "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": ""
       },
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.",
       "files": [
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
