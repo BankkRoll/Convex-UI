@@ -14,7 +14,13 @@
   "files": [
     {
       "path": "src/registry/convex/blocks/social-auth-react/components/login-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/login-form.tsx"
+    },
+    {
+      "path": "src/registry/convex/blocks/social-auth-react/components/logout-button.tsx",
+      "type": "registry:component",
+      "target": "components/logout-button.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-react/convex/schema.ts",

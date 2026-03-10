@@ -27,23 +27,28 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/login-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/sign-up-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/sign-up-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/forgot-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/forgot-password-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/update-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/update-password-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/components/logout-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-nextjs/app/auth/login/page.tsx",
@@ -102,15 +107,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -122,26 +130,24 @@
         "CONVEX_DEPLOYMENT": "",
         "NEXT_PUBLIC_CONVEX_URL": "",
         "AUTH_RESEND_KEY": "",
-        "AUTH_EMAIL_FROM": "",
-        "AUTH_GITHUB_ID": "",
-        "AUTH_GITHUB_SECRET": "",
-        "AUTH_GOOGLE_ID": "",
-        "AUTH_GOOGLE_SECRET": ""
+        "AUTH_EMAIL_FROM": ""
       },
-      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n\n4. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env.local` file as `NEXT_PUBLIC_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "password-based-auth-react",
       "type": "registry:block",
       "title": "Password-Based Authentication (React)",
-      "description": "Password-based authentication components for React with Convex Auth. Includes login, sign-up forms, and full Convex backend.",
+      "description": "Complete password-based authentication flow for React with Convex Auth. Includes login, sign-up, password reset forms, and full Convex backend.",
       "registryDependencies": [
         "button",
         "input",
         "label",
         "card",
-        "alert"
+        "alert",
+        "avatar",
+        "skeleton"
       ],
       "dependencies": [
         "lucide-react",
@@ -152,11 +158,28 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/password-based-auth-react/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/login-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-react/components/sign-up-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/sign-up-form.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/components/forgot-password-form.tsx",
+          "type": "registry:component",
+          "target": "components/forgot-password-form.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/components/update-password-form.tsx",
+          "type": "registry:component",
+          "target": "components/update-password-form.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/password-based-auth-react/components/logout-button.tsx",
+          "type": "registry:component",
+          "target": "components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-react/convex/schema.ts",
@@ -185,24 +208,22 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
         "VITE_CONVEX_URL": "",
         "AUTH_RESEND_KEY": "",
-        "AUTH_EMAIL_FROM": "",
-        "AUTH_GITHUB_ID": "",
-        "AUTH_GITHUB_SECRET": "",
-        "AUTH_GOOGLE_ID": "",
-        "AUTH_GOOGLE_SECRET": ""
+        "AUTH_EMAIL_FROM": ""
       },
-      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n   - `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` - GitHub OAuth credentials (optional)\n   - `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` - Google OAuth credentials (optional)\n\n3. For OAuth providers, configure callback URLs in their dashboards:\n   - GitHub: `https://<your-convex-url>/api/auth/callback/github`\n   - Google: `https://<your-convex-url>/api/auth/callback/google`\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
+      "docs": "## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Set environment variables in the Convex dashboard (Settings > Environment Variables):\n   - `AUTH_RESEND_KEY` - Your Resend API key (required for email verification/reset)\n   - `AUTH_EMAIL_FROM` - Sender email address (optional, defaults to onboarding@resend.dev)\n\n4. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`.\n\n## Post-Install Setup\n\n1. Run `npx convex dev` to start the Convex dev server and get your deployment URL.\n\n2. Copy the deployment URL to your `.env` file as `VITE_CONVEX_URL`.\n\n3. Wrap your app with the `ConvexAuthProvider` from `lib/convex/provider.tsx`."
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -231,53 +252,58 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/login-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/sign-up-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/sign-up-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/forgot-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/forgot-password-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/update-password-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/update-password-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/logout-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/login.tsx",
           "type": "registry:page",
-          "target": "routes/auth/login.tsx"
+          "target": "app/routes/auth/login.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up.tsx",
           "type": "registry:page",
-          "target": "routes/auth/sign-up.tsx"
+          "target": "app/routes/auth/sign-up.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/forgot-password.tsx",
           "type": "registry:page",
-          "target": "routes/auth/forgot-password.tsx"
+          "target": "app/routes/auth/forgot-password.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/update-password.tsx",
           "type": "registry:page",
-          "target": "routes/auth/update-password.tsx"
+          "target": "app/routes/auth/update-password.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up-success.tsx",
           "type": "registry:page",
-          "target": "routes/auth/sign-up-success.tsx"
+          "target": "app/routes/auth/sign-up-success.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/_protected/index.tsx",
           "type": "registry:page",
-          "target": "routes/_protected/index.tsx"
+          "target": "app/routes/_protected/index.tsx"
         },
         {
           "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/schema.ts",
@@ -306,15 +332,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -335,13 +364,7 @@
       "type": "registry:block",
       "title": "Social Authentication (Next.js)",
       "description": "Social authentication (OAuth) for Next.js with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "alert",
-        "avatar",
-        "skeleton"
-      ],
+      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -351,11 +374,13 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/social-auth-nextjs/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/login-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-nextjs/components/logout-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-nextjs/app/auth/login/page.tsx",
@@ -394,15 +419,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -426,11 +454,7 @@
       "type": "registry:block",
       "title": "Social Authentication (React)",
       "description": "Social authentication (OAuth) components for React with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "alert"
-      ],
+      "registryDependencies": ["button", "card", "alert"],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -440,7 +464,13 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/social-auth-react/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/login-form.tsx"
+        },
+        {
+          "path": "src/registry/convex/blocks/social-auth-react/components/logout-button.tsx",
+          "type": "registry:component",
+          "target": "components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-react/convex/schema.ts",
@@ -469,11 +499,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -492,13 +524,7 @@
       "type": "registry:block",
       "title": "Social Authentication (TanStack)",
       "description": "Social authentication (OAuth) for TanStack Start with Convex Auth. Supports GitHub and Google sign-in with full Convex backend.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "alert",
-        "avatar",
-        "skeleton"
-      ],
+      "registryDependencies": ["button", "card", "alert", "avatar", "skeleton"],
       "dependencies": [
         "lucide-react",
         "@convex-dev/auth@latest",
@@ -511,21 +537,23 @@
       "files": [
         {
           "path": "src/registry/convex/blocks/social-auth-tanstack/components/login-form.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/login-form.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-tanstack/components/logout-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/logout-button.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-tanstack/routes/auth/login.tsx",
           "type": "registry:page",
-          "target": "routes/auth/login.tsx"
+          "target": "app/routes/auth/login.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-tanstack/routes/_protected/index.tsx",
           "type": "registry:page",
-          "target": "routes/_protected/index.tsx"
+          "target": "app/routes/_protected/index.tsx"
         },
         {
           "path": "src/registry/convex/blocks/social-auth-tanstack/convex/schema.ts",
@@ -554,15 +582,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -581,31 +612,33 @@
       "type": "registry:component",
       "title": "Realtime Chat (Next.js)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": [
-        "input",
-        "button"
-      ],
+      "registryDependencies": ["input", "button"],
       "dependencies": [
         "lucide-react",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/chat-message.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/chat-message.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/realtime-chat.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/realtime-chat.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-realtime-chat.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-realtime-chat.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-chat-scroll.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-chat-scroll.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-nextjs/convex/schema.ts",
@@ -619,15 +652,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -647,31 +683,33 @@
       "type": "registry:component",
       "title": "Realtime Chat (React)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": [
-        "input",
-        "button"
-      ],
+      "registryDependencies": ["input", "button"],
       "dependencies": [
         "lucide-react",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-chat-react/components/chat-message.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/chat-message.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-react/components/realtime-chat.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-chat.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-react/hooks/use-realtime-chat.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-chat.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-react/hooks/use-chat-scroll.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-chat-scroll.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-react/convex/schema.ts",
@@ -685,11 +723,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -704,33 +744,35 @@
       "type": "registry:component",
       "title": "Realtime Chat (TanStack Start)",
       "description": "A realtime chat component powered by Convex live queries. Messages sync instantly across all connected clients. Includes full Convex backend with demo mode support.",
-      "registryDependencies": [
-        "input",
-        "button"
-      ],
+      "registryDependencies": ["input", "button"],
       "dependencies": [
         "lucide-react",
         "convex@latest",
-        "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
-        "@tanstack/react-query@latest"
+        "@tanstack/react-query@latest",
+        "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-chat-tanstack/components/chat-message.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/chat-message.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-tanstack/components/realtime-chat.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-chat.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-tanstack/hooks/use-realtime-chat.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-chat.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-tanstack/hooks/use-chat-scroll.tsx",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-chat-scroll.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-chat-tanstack/convex/schema.ts",
@@ -744,15 +786,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -771,20 +816,24 @@
       "dependencies": [
         "framer-motion",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-cursor-nextjs/components/cursor.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/cursor.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-nextjs/components/realtime-cursors.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/realtime-cursors.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-nextjs/hooks/use-realtime-cursors.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-realtime-cursors.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-nextjs/convex/schema.ts",
@@ -798,15 +847,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -830,20 +882,24 @@
       "dependencies": [
         "framer-motion",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-cursor-react/components/cursor.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/cursor.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-react/components/realtime-cursors.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-cursors.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-react/hooks/use-realtime-cursors.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-cursors.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-react/convex/schema.ts",
@@ -857,11 +913,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -880,22 +938,26 @@
       "dependencies": [
         "framer-motion",
         "convex@latest",
-        "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
-        "@tanstack/react-query@latest"
+        "@tanstack/react-query@latest",
+        "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-cursor-tanstack/components/cursor.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/cursor.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-tanstack/components/realtime-cursors.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-cursors.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-tanstack/hooks/use-realtime-cursors.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-cursors.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-cursor-tanstack/convex/schema.ts",
@@ -909,15 +971,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -932,26 +997,27 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (Next.js)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": [
-        "avatar",
-        "tooltip"
-      ],
+      "registryDependencies": ["avatar", "tooltip"],
       "dependencies": [
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/realtime-avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/realtime-avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/hooks/use-realtime-presence-room.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-realtime-presence-room.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/convex/schema.ts",
@@ -965,15 +1031,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -993,26 +1062,27 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (React)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": [
-        "avatar",
-        "tooltip"
-      ],
+      "registryDependencies": ["avatar", "tooltip"],
       "dependencies": [
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-react/components/avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-react/components/realtime-avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-react/hooks/use-realtime-presence-room.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-presence-room.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-react/convex/schema.ts",
@@ -1026,11 +1096,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -1045,28 +1117,29 @@
       "type": "registry:component",
       "title": "Realtime Avatar Stack (TanStack Start)",
       "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
-      "registryDependencies": [
-        "avatar",
-        "tooltip"
-      ],
+      "registryDependencies": ["avatar", "tooltip"],
       "dependencies": [
         "convex@latest",
-        "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
-        "@tanstack/react-query@latest"
+        "@tanstack/react-query@latest",
+        "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/realtime-avatar-stack.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/realtime-avatar-stack.tsx"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/hooks/use-realtime-presence-room.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-realtime-presence-room.ts"
         },
         {
           "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/convex/schema.ts",
@@ -1080,15 +1153,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -1103,23 +1179,24 @@
       "type": "registry:component",
       "title": "Dropzone (Next.js)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/dropzone-nextjs/components/dropzone.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/dropzone.tsx"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-nextjs/hooks/use-convex-upload.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-convex-upload.ts"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-nextjs/convex/schema.ts",
@@ -1133,15 +1210,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -1161,23 +1241,24 @@
       "type": "registry:component",
       "title": "Dropzone (React)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
         "convex@latest",
+        "@auth/core",
         "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/dropzone-react/components/dropzone.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/dropzone.tsx"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-react/hooks/use-convex-upload.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-convex-upload.ts"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-react/convex/schema.ts",
@@ -1191,11 +1272,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -1210,25 +1293,26 @@
       "type": "registry:component",
       "title": "Dropzone (TanStack Start)",
       "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "dependencies": [
         "lucide-react",
         "react-dropzone",
         "convex@latest",
-        "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
-        "@tanstack/react-query@latest"
+        "@tanstack/react-query@latest",
+        "@convex-dev/auth@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/dropzone-tanstack/components/dropzone.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/dropzone.tsx"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-tanstack/hooks/use-convex-upload.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-convex-upload.ts"
         },
         {
           "path": "src/registry/convex/blocks/dropzone-tanstack/convex/schema.ts",
@@ -1242,15 +1326,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -1265,26 +1352,27 @@
       "type": "registry:component",
       "title": "Current User Avatar (Next.js)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": [
-        "avatar",
-        "skeleton"
-      ],
+      "registryDependencies": ["avatar", "skeleton"],
       "dependencies": [
         "convex@latest",
-        "@convex-dev/auth@latest"
+        "@convex-dev/auth@latest",
+        "@auth/core"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/current-user-avatar-nextjs/components/current-user-avatar.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "src/components/current-user-avatar.tsx"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-image.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-current-user-image.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-name.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "src/hooks/use-current-user-name.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-nextjs/convex/schema.ts",
@@ -1298,15 +1386,18 @@
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -1326,26 +1417,27 @@
       "type": "registry:component",
       "title": "Current User Avatar (React)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": [
-        "avatar",
-        "skeleton"
-      ],
+      "registryDependencies": ["avatar", "skeleton"],
       "dependencies": [
         "convex@latest",
-        "@convex-dev/auth@latest"
+        "@convex-dev/auth@latest",
+        "@auth/core"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/current-user-avatar-react/components/current-user-avatar.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/current-user-avatar.tsx"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-image.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-current-user-image.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-name.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-current-user-name.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-react/convex/schema.ts",
@@ -1359,11 +1451,13 @@
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ],
       "envVars": {
@@ -1378,28 +1472,29 @@
       "type": "registry:component",
       "title": "Current User Avatar (TanStack Start)",
       "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-      "registryDependencies": [
-        "avatar",
-        "skeleton"
-      ],
+      "registryDependencies": ["avatar", "skeleton"],
       "dependencies": [
         "convex@latest",
         "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
         "@tanstack/react-query@latest"
       ],
       "files": [
         {
           "path": "src/registry/convex/blocks/current-user-avatar-tanstack/components/current-user-avatar.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/current-user-avatar.tsx"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-tanstack/hooks/use-current-user-image.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-current-user-image.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-tanstack/hooks/use-current-user-name.ts",
-          "type": "registry:hook"
+          "type": "registry:hook",
+          "target": "hooks/use-current-user-name.ts"
         },
         {
           "path": "src/registry/convex/blocks/current-user-avatar-tanstack/convex/schema.ts",
@@ -1413,15 +1508,18 @@
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ],
       "envVars": {
@@ -1439,7 +1537,8 @@
       "registryDependencies": [],
       "dependencies": [
         "convex@latest",
-        "@convex-dev/auth@latest"
+        "@convex-dev/auth@latest",
+        "@auth/core"
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
@@ -1449,15 +1548,18 @@
       "files": [
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "src/lib/convex/server.ts"
         },
         {
           "path": "src/registry/convex/clients/nextjs/proxy.ts",
@@ -1475,7 +1577,8 @@
       "registryDependencies": [],
       "dependencies": [
         "convex@latest",
-        "@convex-dev/auth@latest"
+        "@convex-dev/auth@latest",
+        "@auth/core"
       ],
       "envVars": {
         "CONVEX_DEPLOYMENT": "",
@@ -1485,11 +1588,13 @@
       "files": [
         {
           "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         }
       ]
     },
@@ -1503,6 +1608,7 @@
       "dependencies": [
         "convex@latest",
         "@convex-dev/auth@latest",
+        "@auth/core",
         "@convex-dev/react-query@latest",
         "@tanstack/react-query@latest"
       ],
@@ -1514,15 +1620,18 @@
       "files": [
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/client.ts"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/provider.tsx"
         },
         {
           "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-          "type": "registry:lib"
+          "type": "registry:lib",
+          "target": "lib/convex/server.ts"
         }
       ]
     }

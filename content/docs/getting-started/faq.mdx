@@ -17,7 +17,7 @@ description: Frequently asked questions about Convex UI
     <AccordionContent>
       Convex UI uses the **shadcn/ui registry system** to install components directly into your project:
 
-      <Command name="password-based-auth-nextjs" />
+      <Command name="password-based-auth" />
 
       This single command:
       - Downloads React components to your `src/components/` directory
@@ -224,7 +224,7 @@ const messages = useQuery(api.messages.list, { roomId: "general" });`}
     <AccordionContent>
       Perfect! You're ready to go. Just run any `add` command to install Convex UI components:
 
-      <Command name="password-based-auth-nextjs" />
+      <Command name="password-based-auth" />
 
       The components will use your existing shadcn/ui configuration and theme.
     </AccordionContent>
@@ -264,12 +264,17 @@ const messages = useQuery(api.messages.list, { roomId: "general" });`}
   <AccordionItem value="env-vars">
     <AccordionTrigger>My components aren't connecting to Convex</AccordionTrigger>
     <AccordionContent>
-      Check your environment variables:
+      Check your environment variables (variable names depend on your framework):
 
       <CodeBlock language="env">
 
-{`# Required in .env.local
+{`# Required in .env.local (or .env for Vite)
 CONVEX_DEPLOYMENT=dev:your-project-name
+
+# Next.js uses NEXT_PUBLIC_CONVEX_URL
+
+# React/TanStack uses VITE_CONVEX_URL
+
 NEXT_PUBLIC_CONVEX_URL=https://your-project.convex.cloud`}
 
 </CodeBlock>
@@ -316,10 +321,10 @@ NEXT_PUBLIC_CONVEX_URL=https://your-project.convex.cloud`}
       |-------|----------|
       | "Invalid URL" error | Check `CONVEX_SITE_URL` matches your dev server |
       | OAuth redirect fails | Verify callback URLs in provider settings |
-      | Session not persisting | Ensure `ConvexAuthNextjsServerProvider` wraps your app |
-      | "Not authenticated" | Check that `proxy.ts` (Next.js) is in `src/` |
+      | Session not persisting | Ensure the auth provider wraps your app |
+      | "Not authenticated" | Check your auth configuration files |
 
-      See the [auth troubleshooting guide](/ui/docs/nextjs/password-based-auth#troubleshooting) for more details.
+      See the <FrameworkLink page="password-based-auth" hash="troubleshooting">auth troubleshooting guide</FrameworkLink> for more details.
     </AccordionContent>
 
   </AccordionItem>

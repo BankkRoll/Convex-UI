@@ -106,7 +106,7 @@ npx convex dev`}
 
 Now you can add any component from this library. For example, to add password-based authentication:
 
-<Command name="password-based-auth-nextjs" />
+<Command name="password-based-auth" />
 
 This adds:
 
@@ -115,16 +115,15 @@ This adds:
 - Protected route middleware
 - User management functions
 
-<Callout type="warning" className="mt-6">
-  **Framework-specific components.** Make sure to use the right variant for your
-  framework (e.g., `password-based-auth-nextjs` for Next.js,
-  `password-based-auth-react` for React/Vite).
+<Callout type="info" className="mt-6">
+  **Automatic framework selection.** Commands automatically use your selected
+  framework from the sidebar.
 </Callout>
 
 ## What's next?
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-  <LinkedCard href="/ui/docs/nextjs/password-based-auth">
+  <FrameworkLinkedCard page="password-based-auth">
     <svg
       className="w-8 h-8"
       fill="none"
@@ -139,8 +138,8 @@ This adds:
       />
     </svg>
     <span className="font-medium mt-2">Add Authentication</span>
-  </LinkedCard>
-  <LinkedCard href="/ui/docs/nextjs/realtime-chat">
+  </FrameworkLinkedCard>
+  <FrameworkLinkedCard page="realtime-chat">
     <svg
       className="w-8 h-8"
       fill="none"
@@ -155,7 +154,7 @@ This adds:
       />
     </svg>
     <span className="font-medium mt-2">Add Realtime Chat</span>
-  </LinkedCard>
+  </FrameworkLinkedCard>
 </div>
 
 ## Troubleshooting

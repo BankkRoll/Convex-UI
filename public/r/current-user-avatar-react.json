@@ -3,29 +3,26 @@
   "name": "current-user-avatar-react",
   "title": "Current User Avatar (React)",
   "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
-  "dependencies": [
-    "convex@latest",
-    "@convex-dev/auth@latest"
-  ],
-  "registryDependencies": [
-    "avatar",
-    "skeleton"
-  ],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest", "@auth/core"],
+  "registryDependencies": ["avatar", "skeleton"],
   "files": [
     {
       "path": "src/registry/convex/blocks/current-user-avatar-react/components/current-user-avatar.tsx",
       "content": "\"use client\";\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { cn } from \"@/lib/utils\";\nimport { useCurrentUserImage } from \"../hooks/use-current-user-image\";\nimport { useCurrentUserName } from \"../hooks/use-current-user-name\";\n\ninterface CurrentUserAvatarProps {\n  size?: \"sm\" | \"md\" | \"lg\";\n  className?: string;\n  showFallback?: boolean;\n}\n\nconst sizeClasses = {\n  sm: \"h-8 w-8 text-xs\",\n  md: \"h-10 w-10 text-sm\",\n  lg: \"h-12 w-12 text-base\",\n};\n\nfunction getInitials(name: string | null): string {\n  if (!name) return \"?\";\n  return name\n    .split(\" \")\n    .map((n) => n[0])\n    .join(\"\")\n    .toUpperCase()\n    .slice(0, 2);\n}\n\nexport function CurrentUserAvatar({\n  size = \"md\",\n  className,\n  showFallback = true,\n}: CurrentUserAvatarProps) {\n  const image = useCurrentUserImage();\n  const name = useCurrentUserName();\n\n  // Loading state\n  if (image === undefined || name === undefined) {\n    return (\n      <Skeleton className={cn(\"rounded-full\", sizeClasses[size], className)} />\n    );\n  }\n\n  // Not authenticated\n  if (!showFallback && !image && !name) {\n    return null;\n  }\n\n  return (\n    <Avatar className={cn(sizeClasses[size], className)}>\n      <AvatarImage src={image ?? undefined} alt={name ?? \"User\"} />\n      <AvatarFallback>{getInitials(name)}</AvatarFallback>\n    </Avatar>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/current-user-avatar.tsx"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-image.ts",
       "content": "\"use client\";\n\nimport { useQuery } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport function useCurrentUserImage() {\n  const user = useQuery(api.users.current);\n  return user?.image ?? null;\n}\n",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "hooks/use-current-user-image.ts"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-react/hooks/use-current-user-name.ts",
       "content": "\"use client\";\n\nimport { useQuery } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport function useCurrentUserName() {\n  const user = useQuery(api.users.current);\n  return user?.name ?? null;\n}\n",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "hooks/use-current-user-name.ts"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-react/convex/schema.ts",
@@ -42,12 +39,14 @@
     {
       "path": "src/registry/convex/clients/react/lib/convex/client.ts",
       "content": "import { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = (import.meta as any).env.VITE_CONVEX_URL as string;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
       "content": "import { ConvexAuthProvider } from \"@convex-dev/auth/react\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(\n  (import.meta as any).env.VITE_CONVEX_URL as string,\n);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return <ConvexAuthProvider client={convex}>{children}</ConvexAuthProvider>;\n}\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/provider.tsx"
     }
   ],
   "envVars": {

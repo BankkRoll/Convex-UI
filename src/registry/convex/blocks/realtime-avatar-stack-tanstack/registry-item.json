@@ -5,19 +5,27 @@
   "title": "Realtime Avatar Stack (TanStack Start)",
   "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
   "registryDependencies": ["avatar", "tooltip"],
-  "dependencies": ["convex@latest"],
+  "dependencies": [
+    "convex@latest",
+    "@auth/core",
+    "@convex-dev/react-query@latest",
+    "@tanstack/react-query@latest"
+  ],
   "files": [
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/avatar-stack.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/avatar-stack.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/components/realtime-avatar-stack.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/realtime-avatar-stack.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/hooks/use-realtime-presence-room.ts",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "hooks/use-realtime-presence-room.ts"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-tanstack/convex/schema.ts",

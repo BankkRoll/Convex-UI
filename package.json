@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"convex dev\" \"next dev --port 3004\"",
+    "dev": "next dev",
     "build": "pnpm run content:build && pnpm run build:registry && pnpm run build:llms && next build",
     "build:registry": "rimraf public/r && tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && shadcn build ./registry.json -o ./public/r && tsx scripts/clean-registry.ts",
     "build:llms": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-llms-txt.ts",

@@ -6,6 +6,7 @@
   "dependencies": [
     "framer-motion",
     "convex@latest",
+    "@auth/core",
     "@convex-dev/auth@latest"
   ],
   "registryDependencies": [],
@@ -13,17 +14,20 @@
     {
       "path": "src/registry/convex/blocks/realtime-cursor-react/components/cursor.tsx",
       "content": "import { motion } from \"framer-motion\";\n\ninterface CursorProps {\n  name: string;\n  color: string;\n  position: { x: number; y: number };\n}\n\nexport function Cursor({ name, color, position }: CursorProps) {\n  return (\n    <motion.div\n      className=\"pointer-events-none absolute z-50\"\n      style={{\n        left: 0,\n        top: 0,\n      }}\n      initial={{ opacity: 0, scale: 0.5 }}\n      animate={{\n        opacity: 1,\n        scale: 1,\n        x: position.x,\n        y: position.y,\n      }}\n      exit={{ opacity: 0, scale: 0.5 }}\n      transition={{\n        type: \"spring\",\n        damping: 30,\n        stiffness: 500,\n        mass: 0.5,\n      }}\n    >\n      <svg\n        width=\"24\"\n        height=\"24\"\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        style={{ filter: \"drop-shadow(0 1px 2px rgba(0,0,0,0.3))\" }}\n      >\n        <path\n          d=\"M5.65376 12.456H5.46026L5.31717 12.5765L2.16171 15.1385L7.05023 2.2852L19.8545 14.458L6.20728 11.5L5.65376 12.456Z\"\n          fill={color}\n          stroke=\"white\"\n          strokeWidth=\"1.5\"\n        />\n      </svg>\n      <div\n        className=\"absolute left-4 top-4 rounded-full px-2 py-1 text-xs text-white whitespace-nowrap\"\n        style={{ backgroundColor: color }}\n      >\n        {name}\n      </div>\n    </motion.div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/cursor.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-cursor-react/components/realtime-cursors.tsx",
       "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\nimport { AnimatePresence } from \"framer-motion\";\nimport { Cursor } from \"./cursor\";\nimport { useRealtimeCursors } from \"../hooks/use-realtime-cursors\";\n\ninterface RealtimeCursorsProps {\n  roomName: string;\n  username: string;\n  userColor?: string;\n  children?: React.ReactNode;\n  className?: string;\n}\n\nexport function RealtimeCursors({\n  roomName,\n  username,\n  userColor,\n  children,\n  className,\n}: RealtimeCursorsProps) {\n  const containerRef = useRef<HTMLDivElement>(null);\n  const { cursors, createMouseMoveHandler, setContainer, isConnected } =\n    useRealtimeCursors({\n      roomName,\n      username,\n      userColor,\n    });\n\n  useEffect(() => {\n    const container = containerRef.current;\n    if (!container) return;\n\n    // Set container reference for coordinate calculations\n    setContainer(container);\n\n    // Create handler that calculates container-relative positions\n    const handleMove = createMouseMoveHandler(container);\n\n    container.addEventListener(\"mousemove\", handleMove);\n    return () => {\n      container.removeEventListener(\"mousemove\", handleMove);\n      setContainer(null);\n    };\n  }, [createMouseMoveHandler, setContainer]);\n\n  return (\n    <div\n      ref={containerRef}\n      className={`relative overflow-hidden ${className ?? \"\"}`}\n    >\n      {children}\n      <AnimatePresence>\n        {cursors.map((cursor) => (\n          <Cursor\n            key={cursor.id}\n            name={cursor.name}\n            color={cursor.color}\n            position={cursor.position}\n          />\n        ))}\n      </AnimatePresence>\n      {!isConnected && (\n        <div className=\"absolute top-2 right-2 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded\">\n          Connecting...\n        </div>\n      )}\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/realtime-cursors.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-cursor-react/hooks/use-realtime-cursors.ts",
       "content": "\"use client\";\n\nimport { useQuery, useMutation } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\nimport { useCallback, useEffect, useRef, useState } from \"react\";\n\ninterface CursorPosition {\n  x: number;\n  y: number;\n}\n\ninterface CursorData {\n  position: CursorPosition;\n  name: string;\n  color: string;\n}\n\ninterface UseRealtimeCursorsProps {\n  roomName: string;\n  username: string;\n  userColor?: string;\n  throttleMs?: number;\n}\n\nexport interface Cursor {\n  id: string;\n  name: string;\n  color: string;\n  position: CursorPosition;\n}\n\n// Generate a unique session ID\n// Important: Do NOT use localStorage as it's shared between iframes on the same domain,\n// which would cause all instances to share the same sessionId and filter out each other's cursors\nfunction generateSessionId(): string {\n  return `session-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;\n}\n\nexport function useRealtimeCursors({\n  roomName,\n  username,\n  userColor = \"#3b82f6\",\n  throttleMs = 100,\n}: UseRealtimeCursorsProps) {\n  const [sessionId, setSessionId] = useState(\"\");\n  const presenceData = useQuery(api.presence.list, { roomId: roomName });\n  const updatePresence = useMutation(api.presence.update);\n  const leaveRoom = useMutation(api.presence.leave);\n  const lastUpdateRef = useRef<number>(0);\n  const containerRef = useRef<HTMLElement | null>(null);\n\n  useEffect(() => {\n    setSessionId(generateSessionId());\n  }, []);\n\n  // Filter out current user's cursor and map to Cursor type\n  const cursors: Cursor[] = (presenceData ?? [])\n    .filter((p: any) => {\n      // Must have position data\n      if (!p.data?.position) return false;\n      // Filter out current user's cursor (by sessionId)\n      if (p.sessionId && p.sessionId === sessionId) return false;\n      return true;\n    })\n    .map((p: any) => ({\n      id: p._id,\n      name: p.data.name || \"Anonymous\",\n      color: p.data.color || \"#888888\",\n      position: p.data.position!,\n    }));\n\n  const updateCursor = useCallback(\n    (position: CursorPosition) => {\n      if (!sessionId) return;\n\n      const now = Date.now();\n      if (now - lastUpdateRef.current < throttleMs) {\n        return;\n      }\n      lastUpdateRef.current = now;\n\n      const data: CursorData = {\n        position,\n        name: username,\n        color: userColor,\n      };\n      updatePresence({ roomId: roomName, data, sessionId });\n    },\n    [updatePresence, roomName, username, userColor, throttleMs, sessionId],\n  );\n\n  // Create a mouse move handler that calculates container-relative position\n  const createMouseMoveHandler = useCallback(\n    (container: HTMLElement) => {\n      containerRef.current = container;\n      return (e: any) => {\n        const rect = container.getBoundingClientRect();\n        // Calculate position relative to container\n        const x = e.clientX - rect.left;\n        const y = e.clientY - rect.top;\n        updateCursor({ x, y });\n      };\n    },\n    [updateCursor],\n  );\n\n  // Set the container reference\n  const setContainer = useCallback((container: any) => {\n    containerRef.current = container;\n  }, []);\n\n  useEffect(() => {\n    if (!sessionId) return;\n    return () => {\n      leaveRoom({ roomId: roomName, sessionId });\n    };\n  }, [leaveRoom, roomName, sessionId]);\n\n  return {\n    cursors,\n    updateCursor,\n    createMouseMoveHandler,\n    setContainer,\n    isConnected: presenceData !== undefined,\n    sessionId,\n  };\n}\n",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "hooks/use-realtime-cursors.ts"
     },
     {
       "path": "src/registry/convex/blocks/realtime-cursor-react/convex/schema.ts",
@@ -40,12 +44,14 @@
     {
       "path": "src/registry/convex/clients/react/lib/convex/client.ts",
       "content": "import { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = (import.meta as any).env.VITE_CONVEX_URL as string;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
       "content": "import { ConvexAuthProvider } from \"@convex-dev/auth/react\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(\n  (import.meta as any).env.VITE_CONVEX_URL as string,\n);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return <ConvexAuthProvider client={convex}>{children}</ConvexAuthProvider>;\n}\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/provider.tsx"
     }
   ],
   "envVars": {

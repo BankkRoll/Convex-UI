@@ -6,6 +6,7 @@
   "dependencies": [
     "convex@latest",
     "@convex-dev/auth@latest",
+    "@auth/core",
     "@convex-dev/react-query@latest",
     "@tanstack/react-query@latest"
   ],
@@ -14,17 +15,20 @@
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
       "content": "import { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = (import.meta as any).env.VITE_CONVEX_URL as string;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
       "content": "import { ConvexAuthProvider } from \"@convex-dev/auth/react\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(\n  (import.meta as any).env.VITE_CONVEX_URL as string,\n);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return <ConvexAuthProvider client={convex}>{children}</ConvexAuthProvider>;\n}\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/provider.tsx"
     },
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
       "content": "import { convexQuery, useConvexMutation } from \"@convex-dev/react-query\";\nimport { api } from \"@/convex/_generated/api\";\n\nexport { convexQuery, useConvexMutation, api };\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/server.ts"
     }
   ],
   "envVars": {

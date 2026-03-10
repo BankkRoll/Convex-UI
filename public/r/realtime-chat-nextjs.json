@@ -6,32 +6,34 @@
   "dependencies": [
     "lucide-react",
     "convex@latest",
+    "@auth/core",
     "@convex-dev/auth@latest"
   ],
-  "registryDependencies": [
-    "input",
-    "button"
-  ],
+  "registryDependencies": ["input", "button"],
   "files": [
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/chat-message.tsx",
       "content": "import { cn } from \"@/lib/utils\";\n\ninterface ChatMessageProps {\n  message: {\n    id: string;\n    content: string;\n    user: {\n      name: string;\n    };\n    createdAt: string;\n  };\n  isOwnMessage?: boolean;\n}\n\nexport function ChatMessage({\n  message,\n  isOwnMessage = false,\n}: ChatMessageProps) {\n  const formattedTime = new Date(message.createdAt).toLocaleTimeString([], {\n    hour: \"2-digit\",\n    minute: \"2-digit\",\n  });\n\n  return (\n    <div\n      className={cn(\n        \"flex flex-col gap-1.5 max-w-[75%] animate-in fade-in-0 slide-in-from-bottom-2 duration-300\",\n        isOwnMessage ? \"ml-auto items-end\" : \"mr-auto items-start\",\n      )}\n    >\n      <div className=\"flex items-center gap-2 text-xs text-muted-foreground px-1\">\n        <span className=\"font-semibold\">{message.user.name}</span>\n        <span className=\"opacity-60\">{formattedTime}</span>\n      </div>\n      <div\n        className={cn(\n          \"rounded-2xl px-4 py-2.5 text-sm shadow-xs border transition-all\",\n          isOwnMessage\n            ? \"bg-primary text-primary-foreground border-primary/20\"\n            : \"bg-card text-card-foreground border-border\",\n        )}\n      >\n        {message.content}\n      </div>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/chat-message.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/components/realtime-chat.tsx",
       "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Input } from \"@/components/ui/input\";\nimport { Send } from \"lucide-react\";\nimport { useChatScroll } from \"../hooks/use-chat-scroll\";\nimport {\n  useRealtimeChat,\n  type ChatMessage as ChatMessageType,\n} from \"../hooks/use-realtime-chat\";\nimport { ChatMessage } from \"./chat-message\";\n\ninterface RealtimeChatProps {\n  roomName: string;\n  username: string;\n  className?: string;\n}\n\nexport function RealtimeChat({\n  roomName,\n  username,\n  className,\n}: RealtimeChatProps) {\n  const [inputValue, setInputValue] = useState(\"\");\n  const { messages, sendMessage, isConnected } = useRealtimeChat({\n    roomName,\n    username,\n  });\n  const { containerRef, scrollToBottom, handleScroll, shouldAutoScroll } =\n    useChatScroll();\n\n  useEffect(() => {\n    if (shouldAutoScroll()) {\n      scrollToBottom();\n    }\n  }, [messages, scrollToBottom, shouldAutoScroll]);\n\n  const handleSubmit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    if (!inputValue.trim()) return;\n\n    await sendMessage(inputValue.trim());\n    setInputValue(\"\");\n  };\n\n  return (\n    <Card className={`flex flex-col h-full py-0 gap-0 ${className ?? \"\"}`}>\n      <CardHeader className=\"flex flex-row justify-between items-center py-4 space-y-0 border-b\">\n        <CardTitle className=\"text-lg\">{roomName}</CardTitle>\n        <Badge\n          variant={isConnected ? \"default\" : \"destructive\"}\n          className=\"gap-1.5\"\n        >\n          <div className=\"w-1.5 h-1.5 rounded-full bg-current animate-pulse\" />\n          {isConnected ? \"Connected\" : \"Disconnected\"}\n        </Badge>\n      </CardHeader>\n\n      <CardContent\n        ref={containerRef}\n        onScroll={handleScroll}\n        className=\"overflow-y-auto flex-1 space-y-4 p-4! bg-muted/20\"\n      >\n        {messages.length === 0 ? (\n          <div className=\"flex items-center justify-center h-full text-muted-foreground text-sm\">\n            No messages yet. Start the conversation!\n          </div>\n        ) : (\n          messages.map((message) => (\n            <ChatMessage\n              key={message.id}\n              message={message}\n              isOwnMessage={message.user.name === username}\n            />\n          ))\n        )}\n      </CardContent>\n\n      <CardFooter className=\"border-t p-4!\">\n        <form onSubmit={handleSubmit} className=\"w-full\">\n          <div className=\"flex gap-2\">\n            <Input\n              value={inputValue}\n              onChange={(e) => setInputValue(e.target.value)}\n              placeholder=\"Type a message...\"\n              disabled={!isConnected}\n              className=\"flex-1\"\n            />\n            <Button\n              type=\"submit\"\n              size=\"icon\"\n              disabled={!isConnected || !inputValue.trim()}\n            >\n              <Send className=\"w-4 h-4\" />\n            </Button>\n          </div>\n        </form>\n      </CardFooter>\n    </Card>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/realtime-chat.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-realtime-chat.tsx",
       "content": "\"use client\";\n\nimport { useQuery, useMutation } from \"convex/react\";\nimport { api } from \"@/convex/_generated/api\";\nimport { useCallback, useEffect, useState } from \"react\";\n\ninterface UseRealtimeChatProps {\n  roomName: string;\n  username: string;\n}\n\nexport interface ChatMessage {\n  id: string;\n  content: string;\n  user: {\n    name: string;\n  };\n  createdAt: string;\n}\n\n// Get or create a session ID for demo mode\nfunction getSessionId(): string {\n  if (typeof window === \"undefined\") return \"\";\n  let id = localStorage.getItem(\"demo-session-id\");\n  if (!id) {\n    id = `demo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;\n    localStorage.setItem(\"demo-session-id\", id);\n  }\n  return id;\n}\n\nexport function useRealtimeChat({ roomName, username }: UseRealtimeChatProps) {\n  const [sessionId, setSessionId] = useState(\"\");\n  const rawMessages = useQuery(api.messages.list, { roomId: roomName });\n  const sendMutation = useMutation(api.messages.send);\n\n  useEffect(() => {\n    setSessionId(getSessionId());\n  }, []);\n\n  const messages: ChatMessage[] = (rawMessages ?? []).map((msg: any) => ({\n    id: msg._id,\n    content: msg.content,\n    user: {\n      name: msg.userName,\n    },\n    createdAt: new Date(msg._creationTime).toISOString(),\n  }));\n\n  const sendMessage = useCallback(\n    async (content: string) => {\n      await sendMutation({\n        roomId: roomName,\n        content,\n        userName: username,\n        sessionId,\n      });\n    },\n    [sendMutation, roomName, username, sessionId],\n  );\n\n  const isConnected = rawMessages !== undefined;\n\n  return { messages, sendMessage, isConnected };\n}\n",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-realtime-chat.ts"
     },
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/hooks/use-chat-scroll.tsx",
       "content": "\"use client\";\n\nimport { useCallback, useRef } from \"react\";\n\ninterface UseChatScrollOptions {\n  scrollThreshold?: number;\n}\n\nexport function useChatScroll({\n  scrollThreshold = 100,\n}: UseChatScrollOptions = {}) {\n  const containerRef = useRef<HTMLDivElement>(null);\n  const isAtBottomRef = useRef(true);\n\n  const scrollToBottom = useCallback((behavior: ScrollBehavior = \"smooth\") => {\n    if (containerRef.current) {\n      containerRef.current.scrollTo({\n        top: containerRef.current.scrollHeight,\n        behavior,\n      });\n    }\n  }, []);\n\n  const handleScroll = useCallback(() => {\n    if (containerRef.current) {\n      const { scrollTop, scrollHeight, clientHeight } = containerRef.current;\n      isAtBottomRef.current =\n        scrollHeight - scrollTop - clientHeight < scrollThreshold;\n    }\n  }, [scrollThreshold]);\n\n  const shouldAutoScroll = useCallback(() => {\n    return isAtBottomRef.current;\n  }, []);\n\n  return {\n    containerRef,\n    scrollToBottom,\n    handleScroll,\n    shouldAutoScroll,\n  };\n}\n",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-chat-scroll.ts"
     },
     {
       "path": "src/registry/convex/blocks/realtime-chat-nextjs/convex/schema.ts",
@@ -48,17 +50,20 @@
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
       "content": "\"use client\";\n\nimport { ConvexReactClient } from \"convex/react\";\n\nconst convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL!;\n\nexport const convex = new ConvexReactClient(convexUrl);\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
       "content": "\"use client\";\n\nimport { ConvexAuthNextjsProvider } from \"@convex-dev/auth/nextjs\";\nimport { ConvexReactClient } from \"convex/react\";\nimport { ReactNode } from \"react\";\n\nconst convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);\n\nexport function ConvexClientProvider({ children }: { children: ReactNode }) {\n  return (\n    <ConvexAuthNextjsProvider client={convex}>\n      {children}\n    </ConvexAuthNextjsProvider>\n  );\n}\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/provider.tsx"
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
       "content": "import {\n  fetchAction,\n  fetchMutation,\n  fetchQuery,\n  preloadQuery,\n} from \"convex/nextjs\";\n\nimport { api } from \"@/convex/_generated/api\";\n\nexport { fetchQuery, fetchMutation, fetchAction, preloadQuery, api };\n",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/server.ts"
     },
     {
       "path": "src/registry/convex/clients/nextjs/proxy.ts",

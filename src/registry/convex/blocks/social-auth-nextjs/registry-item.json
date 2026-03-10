@@ -14,11 +14,13 @@
   "files": [
     {
       "path": "src/registry/convex/blocks/social-auth-nextjs/components/login-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/login-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-nextjs/components/logout-button.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/logout-button.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-nextjs/app/auth/login/page.tsx",

@@ -5,7 +5,7 @@
   "title": "Convex Client for Next.js",
   "description": "Convex client setup for Next.js with authentication support",
   "registryDependencies": [],
-  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest", "@auth/core"],
   "envVars": {
     "CONVEX_DEPLOYMENT": "",
     "NEXT_PUBLIC_CONVEX_URL": ""
@@ -14,15 +14,18 @@
   "files": [
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/client.ts",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/provider.tsx",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/provider.tsx"
     },
     {
       "path": "src/registry/convex/clients/nextjs/lib/convex/server.ts",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "src/lib/convex/server.ts"
     },
     {
       "path": "src/registry/convex/clients/nextjs/proxy.ts",

@@ -8,6 +8,7 @@
   "dependencies": [
     "convex@latest",
     "@convex-dev/auth@latest",
+    "@auth/core",
     "@convex-dev/react-query@latest",
     "@tanstack/react-query@latest"
   ],
@@ -19,15 +20,18 @@
   "files": [
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/client.ts",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/provider.tsx",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/provider.tsx"
     },
     {
       "path": "src/registry/convex/clients/tanstack/lib/convex/server.ts",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/server.ts"
     }
   ]
 }

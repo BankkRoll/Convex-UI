@@ -5,7 +5,7 @@
   "title": "Convex Client for React",
   "description": "Convex client setup for React (Vite) with authentication support",
   "registryDependencies": [],
-  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest", "@auth/core"],
   "envVars": {
     "CONVEX_DEPLOYMENT": "",
     "VITE_CONVEX_URL": ""
@@ -14,11 +14,13 @@
   "files": [
     {
       "path": "src/registry/convex/clients/react/lib/convex/client.ts",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/client.ts"
     },
     {
       "path": "src/registry/convex/clients/react/lib/convex/provider.tsx",
-      "type": "registry:lib"
+      "type": "registry:lib",
+      "target": "lib/convex/provider.tsx"
     }
   ]
 }

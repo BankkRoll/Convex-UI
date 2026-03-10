@@ -5,19 +5,22 @@
   "title": "Current User Avatar (Next.js)",
   "description": "A reactive avatar component that displays the current authenticated user's image and name. Updates automatically when user data changes. Includes Convex backend for user queries.",
   "registryDependencies": ["avatar", "skeleton"],
-  "dependencies": ["convex@latest", "@convex-dev/auth@latest"],
+  "dependencies": ["convex@latest", "@convex-dev/auth@latest", "@auth/core"],
   "files": [
     {
       "path": "src/registry/convex/blocks/current-user-avatar-nextjs/components/current-user-avatar.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/current-user-avatar.tsx"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-image.ts",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-current-user-image.ts"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-nextjs/hooks/use-current-user-name.ts",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-current-user-name.ts"
     },
     {
       "path": "src/registry/convex/blocks/current-user-avatar-nextjs/convex/schema.ts",

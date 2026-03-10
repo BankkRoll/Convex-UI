@@ -15,21 +15,23 @@
   "files": [
     {
       "path": "src/registry/convex/blocks/social-auth-tanstack/components/login-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/login-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-tanstack/components/logout-button.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/logout-button.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-tanstack/routes/auth/login.tsx",
       "type": "registry:page",
-      "target": "routes/auth/login.tsx"
+      "target": "app/routes/auth/login.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-tanstack/routes/_protected/index.tsx",
       "type": "registry:page",
-      "target": "routes/_protected/index.tsx"
+      "target": "app/routes/_protected/index.tsx"
     },
     {
       "path": "src/registry/convex/blocks/social-auth-tanstack/convex/schema.ts",

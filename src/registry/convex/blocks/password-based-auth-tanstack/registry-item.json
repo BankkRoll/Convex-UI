@@ -23,53 +23,58 @@
   "files": [
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/login-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/login-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/sign-up-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/sign-up-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/forgot-password-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/forgot-password-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/update-password-form.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/update-password-form.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/components/logout-button.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/logout-button.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/login.tsx",
       "type": "registry:page",
-      "target": "routes/auth/login.tsx"
+      "target": "app/routes/auth/login.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up.tsx",
       "type": "registry:page",
-      "target": "routes/auth/sign-up.tsx"
+      "target": "app/routes/auth/sign-up.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/forgot-password.tsx",
       "type": "registry:page",
-      "target": "routes/auth/forgot-password.tsx"
+      "target": "app/routes/auth/forgot-password.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/update-password.tsx",
       "type": "registry:page",
-      "target": "routes/auth/update-password.tsx"
+      "target": "app/routes/auth/update-password.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/auth/sign-up-success.tsx",
       "type": "registry:page",
-      "target": "routes/auth/sign-up-success.tsx"
+      "target": "app/routes/auth/sign-up-success.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/routes/_protected/index.tsx",
       "type": "registry:page",
-      "target": "routes/_protected/index.tsx"
+      "target": "app/routes/_protected/index.tsx"
     },
     {
       "path": "src/registry/convex/blocks/password-based-auth-tanstack/convex/schema.ts",

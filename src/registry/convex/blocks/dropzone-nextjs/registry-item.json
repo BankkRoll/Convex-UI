@@ -5,15 +5,22 @@
   "title": "Dropzone (Next.js)",
   "description": "A file upload dropzone component powered by Convex storage. Supports drag and drop, file validation, upload progress, and full Convex backend.",
   "registryDependencies": ["button"],
-  "dependencies": ["lucide-react", "react-dropzone", "convex@latest"],
+  "dependencies": [
+    "lucide-react",
+    "react-dropzone",
+    "convex@latest",
+    "@auth/core"
+  ],
   "files": [
     {
       "path": "src/registry/convex/blocks/dropzone-nextjs/components/dropzone.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/dropzone.tsx"
     },
     {
       "path": "src/registry/convex/blocks/dropzone-nextjs/hooks/use-convex-upload.ts",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-convex-upload.ts"
     },
     {
       "path": "src/registry/convex/blocks/dropzone-nextjs/convex/schema.ts",

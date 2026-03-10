@@ -6,12 +6,35 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CommandCopyButton } from "./command-copy-button";
 import { useLocalStorage } from "./use-local-storage";
+import { useFramework } from "@/context/framework-context";
+
+// Framework suffixes that indicate the name already includes a framework
+const FRAMEWORK_SUFFIXES = ["-nextjs", "-react", "-tanstack"];
 
 interface CommandCopyProps {
   name: string;
   highlight?: boolean;
   // For Vue, we need to use the `shadcn-vue` package instead of `shadcn`
   framework?: "react" | "vue";
+}
+
+/**
+ * Checks if the name already has a framework suffix
+ */
+function hasFrameworkSuffix(name: string): boolean {
+  return FRAMEWORK_SUFFIXES.some((suffix) => name.endsWith(suffix));
+}
+
+/**
+ * Gets the framework suffix based on the preferred framework
+ */
+function getFrameworkSuffix(preferredFramework: string): string {
+  const suffixMap: Record<string, string> = {
+    nextjs: "-nextjs",
+    react: "-react",
+    tanstack: "-tanstack",
+  };
+  return suffixMap[preferredFramework] || "-nextjs";
 }
 
 // pnpm first as recommended
@@ -48,9 +71,15 @@ export function Command({
   framework = "react",
 }: CommandCopyProps) {
   const [value, setValue] = useLocalStorage(LOCAL_STORAGE_KEY, "pnpm");
+  const { framework: preferredFramework } = useFramework();
+
+  // If name doesn't have a framework suffix, append one based on user's preference
+  const resolvedName = hasFrameworkSuffix(name)
+    ? name
+    : `${name}${getFrameworkSuffix(preferredFramework)}`;
 
   const baseUrl = getBaseUrl();
-  const componentPath = getComponentPath(name);
+  const componentPath = getComponentPath(resolvedName);
 
   const commands: Record<PackageManager, string> =
     framework === "vue"

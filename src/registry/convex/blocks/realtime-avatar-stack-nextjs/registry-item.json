@@ -5,19 +5,22 @@
   "title": "Realtime Avatar Stack (Next.js)",
   "description": "Display a stack of avatars showing users currently present in a room. Updates in realtime as users join and leave. Includes full Convex backend with presence tracking.",
   "registryDependencies": ["avatar", "tooltip"],
-  "dependencies": ["convex@latest"],
+  "dependencies": ["convex@latest", "@auth/core"],
   "files": [
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/avatar-stack.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/avatar-stack.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/components/realtime-avatar-stack.tsx",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "src/components/realtime-avatar-stack.tsx"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/hooks/use-realtime-presence-room.ts",
-      "type": "registry:hook"
+      "type": "registry:hook",
+      "target": "src/hooks/use-realtime-presence-room.ts"
     },
     {
       "path": "src/registry/convex/blocks/realtime-avatar-stack-nextjs/convex/schema.ts",

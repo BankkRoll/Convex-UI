@@ -19,6 +19,8 @@ import { Command } from "./command";
 import { ComponentPreview } from "./component-preview";
 import { CopyButton } from "./copy-button";
 import { DualRealtimeChat } from "./dual-realtime-chat";
+import { FrameworkLink } from "./framework-link";
+import { FrameworkLinkedCard } from "./framework-linked-card";
 import { RegistryBlock } from "./registry-block";
 import { StyleWrapper } from "./style-wrapper";
 import TanStackBeta from "./tanstack-beta";
@@ -241,6 +243,8 @@ const components = {
   BlockItem,
   BlockPreview,
   DualRealtimeChat,
+  FrameworkLink,
+  FrameworkLinkedCard,
 };
 
 interface MdxProps {
